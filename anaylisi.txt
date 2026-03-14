@@ -62,14 +62,18 @@ Web tables
 JSON APIs
 //
 shivam:
-4️⃣ Web Data
+3️⃣ Cloud / Online Services
 
-Power BI can also pull datasets from websites or APIs.
+Power BI can connect to online platforms.
 
 Examples:
 
-REST APIs
+Google Analytics
 
-Web tables
+Salesforce
 
-JSON APIs
+SharePoint
+
+Azure services
+
+Dynamics 365
