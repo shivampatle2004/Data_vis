@@ -11,3 +11,65 @@ Chart Selection by User
 Interactive Dashboard
      ↓
 AI Query + Prediction + Insights
+
+// harsh :
+1️⃣ File-Based Datasets (Most Common)
+
+These are the easiest datasets users upload.
+
+Supported file types:
+
+Excel files (.xlsx, .xls)
+
+CSV files (.csv)
+
+Text files (.txt)
+
+JSON files
+
+XML files
+
+PDF tables
+//
+Tanmay:
+2️⃣ Database Datasets
+
+Power BI can connect directly to databases.
+
+Examples:
+
+SQL Server
+
+MySQL
+
+PostgreSQL
+
+Oracle Database
+
+SQLite
+//
+palak:
+4️⃣ Web Data
+
+Power BI can also pull datasets from websites or APIs.
+
+Examples:
+
+REST APIs
+
+Web tables
+
+JSON APIs
+//
+shivam:
+4️⃣ Web Data
+
+Power BI can also pull datasets from websites or APIs.
+
+Examples:
+
+REST APIs
+
+Web tables
+
+JSON APIs
