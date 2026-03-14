@@ -1,0 +1,13 @@
+Data Upload
+     ↓
+Column Detection
+     ↓
+Data Cleaning / Transformation
+     ↓
+Visualization Possibility Generator
+     ↓
+Chart Selection by User
+     ↓
+Interactive Dashboard
+     ↓
+AI Query + Prediction + Insights
