@@ -299,3 +299,102 @@ async def aggregate_sql_results(
 async def get_user_connections(user_id: int, db: Session = Depends(get_db)):
     connections = db.query(models.UserDatabaseConnection).filter(models.UserDatabaseConnection.user_id == user_id).all()
     return connections
+
+@router.post("/dataverse")
+async def connect_dataverse(
+    background_tasks: BackgroundTasks,
+    request: schemas.DataverseConnectionRequest,
+    db: Session = Depends(get_db)
+):
+    """
+    Connects to Dataverse via Server-to-Server authentication,
+    fetches the specified table, and converts it into a dataset.
+    """
+    try:
+        import msal
+        import requests
+        
+        # Clean up URL
+        env_url = request.environment_url.rstrip('/')
+        if not env_url.startswith('https://'):
+            env_url = 'https://' + env_url
+            
+        authority = f"https://login.microsoftonline.com/{request.tenant_id}"
+        app = msal.ConfidentialClientApplication(
+            request.client_id,
+            authority=authority,
+            client_credential=request.client_secret,
+        )
+        
+        # Scope is the environment URL + /.default
+        scope = [f"{env_url}/.default"]
+        
+        # Acquire token
+        result = app.acquire_token_for_client(scopes=scope)
+        if "access_token" not in result:
+            error_msg = result.get("error_description", result.get("error", "Unknown MSAL Error"))
+            raise HTTPException(status_code=401, detail=f"Authentication failed: {error_msg}")
+            
+        access_token = result["access_token"]
+        
+        # Fetch data from Dataverse OData API
+        # Only fetching top 5000 rows for performance in this integration
+        headers = {
+            "Authorization": f"Bearer {access_token}",
+            "OData-MaxVersion": "4.0",
+            "OData-Version": "4.0",
+            "Accept": "application/json",
+            "Prefer": "odata.maxpagesize=5000"
+        }
+        
+        api_url = f"{env_url}/api/data/v9.2/{request.table_name}"
+        response = requests.get(api_url, headers=headers)
+        
+        if not response.ok:
+            raise HTTPException(status_code=response.status_code, detail=f"Dataverse API Error: {response.text}")
+            
+        data = response.json().get('value', [])
+        if not data:
+            raise HTTPException(status_code=404, detail=f"Table '{request.table_name}' returned no data.")
+            
+        # Convert to Pandas DataFrame
+        df = pd.DataFrame(data)
+        
+        # Remove OData metadata columns that start with '@'
+        cols_to_keep = [c for c in df.columns if not c.startswith('@')]
+        df = df[cols_to_keep]
+        
+        # Save as CSV
+        file_id = str(uuid.uuid4())
+        file_name = f"dataverse_{request.table_name}_{file_id[:8]}.csv"
+        file_path = os.path.join(UPLOAD_DIR, f"{file_id}.csv")
+        df.to_csv(file_path, index=False)
+        
+        # Create UploadedFile record
+        db_file = models.UploadedFile(
+            id=file_id,
+            user_id=request.user_id,
+            file_name=file_name,
+            file_path=file_path,
+            status="pending",
+            row_count=len(df),
+            column_count=len(df.columns)
+        )
+        db.add(db_file)
+        db.commit()
+        
+        # Trigger background processing
+        from tasks import run_file_processing
+        background_tasks.add_task(run_file_processing, file_id)
+        
+        return {
+            "file_id": file_id, 
+            "status": "pending", 
+            "message": f"Successfully pulled {len(df)} rows from {request.table_name}."
+        }
+        
+    except HTTPException:
+        raise
+    except Exception as e:
+        print(f"Dataverse Error: {e}")
+        raise HTTPException(status_code=500, detail=str(e))

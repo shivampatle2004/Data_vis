@@ -159,7 +159,8 @@ function LandingPage({ userId, isDarkMode, toggleTheme, onLogin }) {
   const [isAddFileModalOpen, setIsAddFileModalOpen] = useState(false)
   const [activeView, setActiveView] = useState('report') // 'report' | 'data' | 'model'
   const [activeVisualId, setActiveVisualId] = useState(null)
-  const [isSqlModalOpen, setIsSqlModalOpen] = useState(false)
+  const [isSqlModalOpen, setIsSqlModalOpen] = useState(false);
+  const [isDataverseModalOpen, setIsDataverseModalOpen] = useState(false);
   const [sqlForm, setSqlForm] = useState({
     serverName: '',
     databaseName: '',
@@ -181,6 +182,16 @@ function LandingPage({ userId, isDarkMode, toggleTheme, onLogin }) {
   const [sqlConnections, setSqlConnections] = useState([]);
   const [sqlQuery, setSqlQuery] = useState('');
   const [selectedConnectionName, setSelectedConnectionName] = useState('');
+
+  // Dataverse state
+  const [dataverseForm, setDataverseForm] = useState({
+    environmentUrl: '',
+    tenantId: '',
+    clientId: '',
+    clientSecret: '',
+    tableName: ''
+  });
+  const [isDataverseSubmitting, setIsDataverseSubmitting] = useState(false);
 
   // Sidebar State for Expansion Coordination
   const [isInsightsCollapsed, setIsInsightsCollapsed] = useState(false);
@@ -552,6 +563,56 @@ function LandingPage({ userId, isDarkMode, toggleTheme, onLogin }) {
       }
     }
   }
+
+  const handleDataverseConnect = async (e) => {
+    e.preventDefault();
+    setIsDataverseSubmitting(true);
+    setSqlError('');
+    setSqlSuccess('');
+
+    try {
+      const payload = {
+        user_id: userId || 1, // Fallback for demo
+        environment_url: dataverseForm.environmentUrl,
+        tenant_id: dataverseForm.tenantId,
+        client_id: dataverseForm.clientId,
+        client_secret: dataverseForm.clientSecret,
+        table_name: dataverseForm.tableName
+      };
+
+      const res = await fetch('/api/sql/dataverse', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      if (!res.ok) {
+        const errorData = await res.json().catch(() => ({}));
+        throw new Error(errorData.detail || 'Dataverse connection failed');
+      }
+
+      const data = await res.json();
+      
+      setSqlSuccess(`Starting import of ${dataverseForm.tableName}...`);
+      
+      // Simulate close after success message
+      setTimeout(() => {
+        setIsDataverseModalOpen(false);
+        setIsSqlModalOpen(false);
+        setSqlSuccess('');
+        
+        // Push file to UI flow
+        if (data.file_id) {
+          navigate(`/?fileId=${data.file_id}&fileName=${encodeURIComponent("Dataverse: " + dataverseForm.tableName)}`);
+        }
+      }, 1500);
+
+    } catch (err) {
+      setSqlError(err.message);
+    } finally {
+      setIsDataverseSubmitting(false);
+    }
+  };
 
   const handleUpload = async (file) => {
     if (!file) return;
@@ -1269,6 +1330,14 @@ function LandingPage({ userId, isDarkMode, toggleTheme, onLogin }) {
         setSqlQuery('');
         setConnectionId(null);
         setSelectedConnectionName('');
+        break;
+      case 'dataverse':
+        // Reuse sql styling wrapper for simplicity, set flag internally
+        setIsDataverseModalOpen(true);
+        setIsSqlModalOpen(true); 
+        setSqlModalStep(0); // Secret Step 0 = Dataverse
+        setSqlError('');
+        setSqlSuccess('');
         break;
       case 'publish':
         const shareUrl = `${window.location.origin}/?fileId=${fileId || 'demo'}&fileName=${fileName || 'Report'}`;
@@ -2229,8 +2298,110 @@ function LandingPage({ userId, isDarkMode, toggleTheme, onLogin }) {
       </div>
 
       {isSqlModalOpen && (
-        <div className="sql-modal-overlay" onClick={() => setIsSqlModalOpen(false)}>
-          {sqlModalStep === 1 && (
+        <div className="sql-modal-overlay" onClick={() => { setIsSqlModalOpen(false); setIsDataverseModalOpen(false); }}>
+          
+          {isDataverseModalOpen && (
+            <div className="sql-modal" onClick={e => e.stopPropagation()}>
+              <div className="sql-modal-header">
+                <h2 className="sql-modal-title">Connect to Microsoft Dataverse</h2>
+                <button
+                  type="button"
+                  className="sql-modal-close"
+                  onClick={() => {
+                    setIsDataverseModalOpen(false);
+                    setIsSqlModalOpen(false);
+                    setSqlError('');
+                    setSqlSuccess('');
+                  }}
+                  aria-label="Close dialog"
+                >
+                  ×
+                </button>
+              </div>
+              <form className="sql-modal-body" onSubmit={handleDataverseConnect}>
+                <p className="upload-sub-text" style={{marginBottom: "16px"}}>Requires Server-to-Server (S2S) Application Credentials</p>
+                {sqlError && (
+                  <div className="sql-error-banner">
+                    {sqlError}
+                  </div>
+                )}
+                {sqlSuccess && (
+                  <div className="sql-success-banner">
+                    {sqlSuccess}
+                  </div>
+                )}
+                <div className="sql-form-group">
+                  <label className="sql-label">Environment URL</label>
+                  <input
+                    className="sql-input"
+                    value={dataverseForm.environmentUrl}
+                    onChange={e => setDataverseForm(f => ({ ...f, environmentUrl: e.target.value }))}
+                    placeholder="https://org.crm.dynamics.com"
+                    required
+                  />
+                </div>
+                <div className="sql-form-group">
+                  <label className="sql-label">Tenant ID (Directory ID)</label>
+                  <input
+                    className="sql-input"
+                    value={dataverseForm.tenantId}
+                    onChange={e => setDataverseForm(f => ({ ...f, tenantId: e.target.value }))}
+                    placeholder="e.g. 1a2b3c4d-..."
+                    required
+                  />
+                </div>
+                <div className="sql-form-row">
+                  <div className="sql-form-group">
+                    <label className="sql-label">Application Client ID</label>
+                    <input
+                      className="sql-input"
+                      value={dataverseForm.clientId}
+                      onChange={e => setDataverseForm(f => ({ ...f, clientId: e.target.value }))}
+                      required
+                    />
+                  </div>
+                  <div className="sql-form-group">
+                    <label className="sql-label">Client Secret</label>
+                    <input
+                      className="sql-input"
+                      type="password"
+                      value={dataverseForm.clientSecret}
+                      onChange={e => setDataverseForm(f => ({ ...f, clientSecret: e.target.value }))}
+                      required
+                    />
+                  </div>
+                </div>
+                <div className="sql-form-group" style={{marginTop: '8px'}}>
+                  <label className="sql-label">Dataverse Table Definition Name</label>
+                  <input
+                    className="sql-input"
+                    value={dataverseForm.tableName}
+                    onChange={e => setDataverseForm(f => ({ ...f, tableName: e.target.value }))}
+                    placeholder="e.g. accounts, contacts, crfc9_customtables"
+                    required
+                  />
+                </div>
+                <div className="sql-modal-footer" style={{ margin: 0, paddingBottom: 0, marginTop: '20px' }}>
+                  <button
+                    type="button"
+                    className="sql-btn sql-btn-secondary"
+                    onClick={() => { setIsDataverseModalOpen(false); setIsSqlModalOpen(false); }}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="sql-btn sql-btn-primary"
+                    disabled={isDataverseSubmitting}
+                  >
+                    {isDataverseSubmitting ? 'Authenticating…' : 'Load Data'}
+                  </button>
+                </div>
+              </form>
+            </div>
+          )}
+
+          {!isDataverseModalOpen && sqlModalStep === 1 && (
             <div className="sql-modal" onClick={e => e.stopPropagation()}>
               <div className="sql-modal-header">
                 <h2 className="sql-modal-title">Connect to SQL Server</h2>

@@ -87,3 +87,11 @@ class GraphDataResponse(BaseModel):
 
 class QueryRequest(BaseModel):
     prompt: str
+
+class DataverseConnectionRequest(BaseModel):
+    user_id: int
+    environment_url: str
+    tenant_id: str
+    client_id: str
+    client_secret: str
+    table_name: str
