@@ -1,0 +1,477 @@
+Phase 6 – AI & Intelligent Business Intelligence
+Reports Page Enhancement
+1. Project Overview
+
+Previous phases delivered:
+
+Phase 1: Dashboard foundation
+
+Phase 2: Interactive filtering
+
+Phase 3: Data modeling & measures
+
+Phase 4: Advanced analytics
+
+Phase 5: Performance & scalability
+
+Phase 6 introduces:
+
+Natural Language Query (NLQ)
+
+Auto Insight Generation
+
+Anomaly Detection
+
+Smart Narrative Summaries
+
+Intelligent Chart Recommendations (AI-driven)
+
+Predictive Suggestions
+
+Conversational Analytics Assistant
+
+This phase positions the platform as an AI-powered BI system.
+
+2. Scope of Phase 6
+
+This phase includes:
+
+Natural Language Query Engine
+
+AI Insight Generation
+
+Anomaly Detection System
+
+Smart Narrative Generator
+
+AI-Powered Chart Recommendation
+
+Conversational Analytics Interface
+
+Model Monitoring & Explainability
+
+This phase does NOT include:
+
+Enterprise compliance features
+
+External AI marketplace integrations
+
+Fully autonomous dashboard creation (future phase)
+
+3. Functional & Technical Requirements
+3.1 Natural Language Query (NLQ)
+Objective
+
+Allow users to type analytical questions in natural language and receive visual answers.
+
+Functional Requirements
+
+User can type queries like:
+
+"Show total revenue by region."
+
+"Top 5 products by profit."
+
+"Sales trend for 2025."
+
+"Compare revenue and cost by month."
+
+System must:
+
+Parse intent.
+
+Identify:
+
+Measures
+
+Dimensions
+
+Time context
+
+Aggregation type
+
+Generate:
+
+Query plan
+
+Recommended chart
+
+Render result instantly.
+
+Allow manual refinement.
+
+NLQ Processing Pipeline
+
+Text preprocessing.
+
+Schema matching (map words to fields).
+
+Intent detection (aggregation, comparison, trend).
+
+Query plan generation.
+
+Chart selection logic.
+
+Execution via query engine.
+
+Example Output Structure
+{
+  "parsedQuery": {
+    "measure": "SUM(Revenue)",
+    "dimension": "Region",
+    "chartType": "bar"
+  }
+}
+Acceptance Criteria
+
+Recognizes dataset fields correctly.
+
+Correct aggregation applied.
+
+Correct chart suggested.
+
+Ambiguous queries prompt clarification.
+
+Works within 1–2 seconds typical case.
+
+3.2 AI Insight Generation
+Objective
+
+Automatically surface meaningful insights from dataset.
+
+Functional Requirements
+
+System must analyze dataset and detect:
+
+Highest/lowest values.
+
+Strong trends.
+
+Significant percentage changes.
+
+Top contributing categories.
+
+Distribution skewness.
+
+Insights must:
+
+Update when filters change.
+
+Be optionally auto-generated.
+
+Be dismissible by user.
+
+Insight Structure
+{
+  "insights": [
+    {
+      "type": "trend",
+      "message": "Revenue increased 24% compared to last month."
+    }
+  ]
+}
+Acceptance Criteria
+
+Insight accurate.
+
+Reflects active filters.
+
+Updates dynamically.
+
+No misleading conclusions.
+
+3.3 Anomaly Detection System
+Objective
+
+Detect unusual patterns in time-series or numeric distributions.
+
+Functional Requirements
+
+System must detect:
+
+Sudden spikes
+
+Sudden drops
+
+Outliers
+
+Statistical deviations (e.g., > 2 standard deviations)
+
+Applicable to:
+
+Line charts
+
+Time-series measures
+
+Scatter plots
+
+Detected anomalies must:
+
+Be visually highlighted.
+
+Show explanation tooltip.
+
+Configuration Example
+{
+  "anomalyDetection": {
+    "enabled": true,
+    "sensitivity": "medium"
+  }
+}
+Acceptance Criteria
+
+Outliers highlighted correctly.
+
+Works with filters.
+
+False positives minimized.
+
+Performance acceptable.
+
+3.4 Smart Narrative Generator
+Objective
+
+Generate human-readable summaries of dashboards.
+
+Functional Requirements
+
+System must generate summary text like:
+
+"Revenue reached its highest value in Q4 2025."
+
+"East region contributed 42% of total revenue."
+
+"Sales show a steady upward trend."
+
+Narratives must:
+
+Reflect current filters.
+
+Update automatically.
+
+Be editable by user.
+
+Be exportable.
+
+Narrative Structure
+{
+  "narrative": "Revenue increased steadily over the past 6 months, with Q4 being the strongest quarter."
+}
+Acceptance Criteria
+
+Text matches actual data.
+
+No contradictions.
+
+Updates when filters change.
+
+Export includes narrative.
+
+3.5 AI-Powered Chart Recommendation (Advanced)
+Objective
+
+Move from rule-based to intelligent chart selection.
+
+Functional Requirements
+
+System must evaluate:
+
+Data distribution
+
+Cardinality
+
+Variance
+
+Correlation
+
+Historical user behavior
+
+Use ML model or heuristics to recommend:
+
+Optimal chart
+
+Optimal aggregation
+
+Potential drill hierarchy
+
+Recommendations must:
+
+Appear during chart creation.
+
+Rank suggestions.
+
+Allow override.
+
+Recommendation Output
+{
+  "recommendations": [
+    { "chart": "line", "confidence": 0.87 },
+    { "chart": "area", "confidence": 0.65 }
+  ]
+}
+Acceptance Criteria
+
+Suggestions contextually accurate.
+
+Confidence score logical.
+
+Overrides allowed.
+
+Learns from usage patterns (optional advanced).
+
+3.6 Conversational Analytics Interface
+Objective
+
+Provide chat-style interaction for analytics.
+
+Functional Requirements
+
+User can:
+
+Ask follow-up questions.
+
+Refine previous query.
+
+Request explanation of chart.
+
+Ask "Why did revenue drop in March?"
+
+System must:
+
+Maintain conversation context.
+
+Refer to active dashboard.
+
+Clarify ambiguous questions.
+
+Provide visual + textual output.
+
+Context Structure
+{
+  "conversationContext": {
+    "activeMeasure": "Revenue",
+    "activeDimension": "Month",
+    "filters": []
+  }
+}
+Acceptance Criteria
+
+Context maintained across messages.
+
+Follow-up queries modify existing chart.
+
+Clarification prompts work.
+
+No incorrect schema references.
+
+3.7 Model Monitoring & Explainability
+Objective
+
+Ensure AI transparency and reliability.
+
+Requirements
+
+System must:
+
+Log AI decisions.
+
+Provide explanation for:
+
+Why chart chosen.
+
+Why anomaly detected.
+
+Allow users to disable AI features.
+
+Provide confidence scores.
+
+Acceptance Criteria
+
+AI decisions explainable.
+
+Confidence shown.
+
+Users can disable AI modules.
+
+Logs available for debugging.
+
+4. Performance Requirements
+
+NLQ response < 2 seconds.
+
+Insight generation < 1 second typical.
+
+No UI blocking.
+
+Heavy ML tasks run in worker/backend.
+
+System remains responsive during AI tasks.
+
+5. Testing & Validation Checklist
+NLQ
+
+Correctly parse simple queries.
+
+Handle ambiguous queries.
+
+Works with multi-table models.
+
+Generates correct chart.
+
+Insights
+
+Detect top category correctly.
+
+Detect trend correctly.
+
+No incorrect claims.
+
+Anomaly Detection
+
+Identify statistical outliers.
+
+Works with filters.
+
+Highlight correctly.
+
+Narratives
+
+Text reflects real data.
+
+Updates dynamically.
+
+No contradictory statements.
+
+Conversational Mode
+
+Maintains context.
+
+Follow-up works.
+
+Clarification prompt works.
+
+6. Completion Definition
+
+Phase 6 is complete when:
+
+Users can query data using natural language.
+
+System generates accurate insights automatically.
+
+Anomalies detected reliably.
+
+Narratives summarize dashboards.
+
+AI recommendations improve usability.
+
+Conversational assistant maintains context.
+
+AI decisions explainable.
+
+Performance remains stable.
+
+Expected Outcome After Phase 6
+
+After Phase 6, your platform becomes:
+
+An AI-powered analytics intelligence system capable of conversational querying, automated insights, anomaly detection, predictive guidance, and intelligent visualization — moving beyond traditional BI into augmented analytics.

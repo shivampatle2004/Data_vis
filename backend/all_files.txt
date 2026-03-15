@@ -1,0 +1,261 @@
+ID                                       | File Name
+------------------------------------------------------------
+8f33a7a9-6a73-4861-b702-574fa3f2c2af     | test_sales.sql
+06e61a6e-c9d7-46b3-a485-05b88838cc86     | bank.csv
+5f61cd7b-509d-49d9-8ff7-1b7e5ecc32ec     | bank.csv
+8d03e837-d68b-4721-9170-e020a8c6b8e9     | sample1.sql
+c7e4e773-03a3-4d82-a3e8-858da8ab948d     | UPI DATA.csv
+b9cfb7d2-9740-4e29-b104-62d96913c3b4     | bank3eg.json
+8ef4a23b-8d5a-4afe-b4bc-6369c7d2fec8     | UPI DATA.csv
+a9e4159d-ca23-43b3-9eef-d5391b0cf6a1     | UPI DATA.csv
+e5bbf517-46a6-45cf-9aa4-a5e9525f8d73     | sample1.sql
+94fdef6d-2b4e-4dbb-afc6-08ab6f7d73d7     | UPI DATA.csv
+62979e8b-2dc1-455f-b164-cb5bdf37c722     | sample1.sql
+0720ed1c-4ee1-40fd-b569-1d2dcdb1549f     | sample1.sql
+6428616a-4ad9-490f-ae1b-d93947b24970     | sample1.sql
+7a40e882-475f-4fff-8e10-cd320f83ce9d     | sample1.sql
+04c1315b-7509-4a3d-abb8-4aeb74969ee6     | sample1.sql
+b5891506-dd44-4bc1-9185-19e447232ba8     | UPI DATA.csv
+cde38167-1ea6-4b04-b21f-40c9079cc511     | sample1.sql
+28509643-e8e6-4126-ae83-2f319102523e     | sample1.sql
+3d3ed300-2755-4c25-bf48-5802ca1305e7     | sample1.sql
+ebeb5da0-b27e-4e49-8c4a-8782d8a36247     | sample1.sql
+60bd3255-b85b-42c0-8280-6ae38554618c     | sample1.sql
+3a1f43cc-fe93-458a-b5ff-6a43dddaf940     | bank.csv
+2aa1f7da-18e9-4bc3-9305-6dbf9ba1d2b9     | bank.csv
+023cb4d7-59dd-4ec0-9129-737d18b882d3     | sample1.sql
+1bd84e09-afd2-45b1-bfb9-05467cf9af75     | sample1.sql
+2dd1e79b-84a9-4ae1-87ce-75aa402ea27d     | bank.csv
+82df647c-703a-4abb-a060-7c0673ddd203     | sample1.sql
+4824c43b-4696-4e42-8261-bd589659f269     | sample1.sql
+e685c213-10cc-4ded-8f38-de8c23324209     | UPI DATA.csv
+5add274d-d95d-40a9-84d9-36e530d0f8aa     | sample1.sql
+78155a68-21d0-41d9-99ec-e9111c328cda     | UPI DATA.csv
+f8440d32-06b1-4763-b7ca-caf6d7b3985e     | test_sales.sql
+190b3426-c7a0-4c0d-9eb9-11ef2bfdc9f3     | bank.csv
+ecc9982d-fce4-4a67-9dae-eca2ca6f24b0     | sample1.sql
+bca2228b-e187-4acc-ac2f-eae49ef7513b     | bank.csv
+1a8ec656-7e8c-456b-abf3-b2b9fd27f098     | bank3eg.json
+a277a1d5-6b70-46ec-a8ba-7f89c104ceba     | bank3eg.json
+72002849-bc67-468e-bbca-3741e06e42bd     | bank.csv
+dbd2c6b4-ebe0-4610-b8b6-10e61c2415d8     | bank.csv
+0072f4f4-7006-4320-b8d9-899cd4d6b338     | UPI DATA.csv
+c253c23d-42ab-4746-abe6-f89719e69356     | bank3eg.json
+7599e0a8-6852-46a0-b137-083e6a696d3f     | bank3eg.json
+6cee39a5-b6cf-4b40-a364-4897c53273b3     | customers-100.csv
+3c668270-2ff4-4ed4-ace2-37a877c6e2ce     | bank3eg.json
+d3b0e793-70dc-4a4c-82a8-954370c37380     | Technological-Products-Sample-Data.xlsx
+dffdbd75-e8dc-4acc-a293-c767bd0adcc7     | Basic-Data-Entry-and-Formatting.xlsx
+d22d0ac9-7c87-46a2-ab9f-d7724249484c     | UPI DATA.csv
+c5955fd5-16ab-48c7-83eb-6bb2c6dc72c8     | bank.csv
+d128e5b8-03f3-43e2-b4ee-4eca4c92af6d     | Basic-Data-Entry-and-Formatting.xlsx
+0842ed05-63d9-48ad-ab05-f3ce7d4048e2     | bank.csv
+ded310dc-da28-4a94-b323-6009269fb380     | sample1.sql
+6af6f542-a136-4c77-bc67-95ac1ea7ea43     | bank.csv
+19f9b8f9-f5aa-44d7-95f1-544bcccfe692     | Technological-Products-Sample-Data.xlsx
+5c35e8ad-a483-4f0f-97dc-9db9df5055fb     | Basic-Data-Entry-and-Formatting.xlsx
+90b89272-be6c-421a-8df1-3f9275e1708a     | bank.csv
+f785aa6e-7dd2-49c7-a7a0-023d837a194d     | bank.csv
+27df8168-9ee3-4ac6-8ec7-be61c2d5783b     | Basic-Data-Entry-and-Formatting.xlsx
+db2e101e-ddbc-4652-a081-9563c479c2fa     | Technological-Products-Sample-Data.xlsx
+dfe32567-3e38-4fe6-a3b9-9af6d2432744     | sample1.sql
+943aada0-3598-4620-bb71-b9991198a933     | Technological-Products-Sample-Data.xlsx
+b411853e-dda5-4063-a6b1-bf13506a2935     | Technological-Products-Sample-Data.xlsx
+49e1c8aa-0e5e-4ad8-81a0-1196e55c889d     | Technological-Products-Sample-Data.xlsx
+a1b6bd9f-8126-4f42-ad22-f5bab6d535dc     | Basic-Data-Entry-and-Formatting.xlsx
+02b9914e-7236-47a2-8ba0-5e0835a29db0     | bank.csv
+c4bb882c-aeab-45f9-8fd0-b4242c45fc99     | bank.csv
+3c102cf0-30cf-43c7-bae5-cef4877fff58     | customers-100.csv
+661e8f47-9920-485c-bbe4-36d04ebe9622     | Basic-Data-Entry-and-Formatting.xlsx
+b3f0e05a-dd0b-4427-bc73-f987d8d50d89     | customers-100.csv
+7e980c8b-10df-4dd0-84b3-c387303530c1     | Basic-Data-Entry-and-Formatting.xlsx
+f74d870c-1d16-41d1-a2b7-4378c3b511c9     | bank.csv
+a8ff1e53-afa1-4f53-bbe7-9d7193ca4eaa     | bank.csv
+1daedfb9-3278-4363-96b8-32b34113f227     | bank.csv
+31506b8f-5a52-4aac-a8c9-3ac784c4b4ce     | UPI DATA.csv
+2f0872fb-5a7f-45a4-a099-75e77f812e0e     | bank.csv
+4a343019-90e1-4d44-8300-cc793ebf9725     | bank.csv
+0591dfe8-c5e5-46f9-88a7-1adb7daf9747     | bank.csv
+b618593c-e43f-4b9e-b9a6-c958c0419338     | bank.csv
+a3d08163-6631-42fe-a7c4-3059485deee7     | bank.csv
+4da6318d-37f0-48dc-a833-b9d8397d2d0c     | bank.csv
+b4e0c26c-d727-41ce-b4f5-66772f057acc     | bank.csv
+9c4dbe9b-ee33-496f-8bbf-7f708a3b8b6d     | UPI DATA.csv
+2d23a714-7123-40fd-980e-38687eac7a8f     | Basic-Data-Entry-and-Formatting.xlsx
+c4105bbc-a1ba-4c5c-bafe-c331ab7eb878     | UPI DATA.csv
+c5f497c9-4f18-4468-8867-83c2e76361f7     | UPI DATA.csv
+ea0a07f5-7d94-4e11-b4a1-076d1fa4a24a     | bankdataset.xlsx
+0d1babb1-6774-492b-9c27-ffc0ec632720     | bank3eg.json
+37f97042-7868-4a94-8982-dea82b1d59db     | bankdataset.xlsx
+2563201b-9605-43e6-8385-fd0056a8bd02     | bank.csv
+a57890a8-75ab-4c95-9956-ce8ef91f94f4     | bankdataset.xlsx
+10d35b63-3d82-45ad-86c3-381a8c4ff871     | bank.csv
+9bb69818-db13-4894-a46d-a44273c7623e     | customers-100.csv
+3cf7bce7-6c8d-4b36-8cb9-6daf0771fbe4     | Technological-Products-Sample-Data.xlsx
+4304336e-a36e-40a4-acb0-66febb57b855     | bank3eg.json
+c4cf1bee-6936-42fa-8617-9f249c257520     | bank.csv
+a0c3c19d-f1bb-4f05-a307-0c8a9a954742     | bank.csv
+aef1603d-d469-4793-82db-46e4670cbc4d     | bank.csv
+d3d62f0d-2168-4426-8900-8dcbd1769e57     | bank.csv
+4bce9523-510e-43c2-987b-858c2a135efd     | bank.csv
+6ffc0b3b-b30f-4549-82c9-63bbcecec098     | bankdataset.xlsx
+ad247b45-dd0d-4645-acc2-d88aec59e8dd     | bank.csv
+a4cb566c-8077-4857-a08b-85c863671654     | customers-100.csv
+930efd89-f0e5-4ba1-8045-b3e9aa93f1f6     | bank.csv
+a81b24b0-3310-4a19-97e3-9abdeae9215c     | customers-100.csv
+f86ae7be-21db-49d3-92d4-bf62b7e35491     | bankdataset.xlsx
+e574beec-116b-48a9-8c5e-7b6c7a469fd1     | UPI DATA.csv
+63f9c7f6-5383-4c14-9474-3d4e99330b6c     | Technological-Products-Sample-Data.xlsx
+b3d940d0-5ffa-4bd3-93f6-46ac91d8f4ba     | bank.csv
+d550a5c3-60ab-4579-bec0-b8a607d32c4a     | bankdataset.xlsx
+0343e583-93eb-4fbc-8ae5-67f0ac9d295c     | customers-100.csv
+ae02b233-2207-4a4e-b87d-30118457203d     | Technological-Products-Sample-Data.xlsx
+e3c17a15-51d2-47f4-8ab9-73f26e4e665f     | customers-100.csv
+2b3b664c-6811-4508-b04c-14bd80a7f1be     | bank.csv
+e09f4327-1dcb-4a3d-98fc-5c798603ce0a     | Technological-Products-Sample-Data.xlsx
+6c87cec8-a696-4999-ae77-f04316abec78     | customers-100.csv
+8b7b4727-51a5-4987-9305-d3f29c8fd0c9     | bankdataset.xlsx
+7c3720ad-94d7-4e65-a5d7-176551e33df5     | bank.csv
+a14d5478-9536-4cf5-a593-228dfdc7d7dc     | bank.csv
+00a593d9-a6a0-4702-892a-eb49bb5c729e     | customers-100.csv
+b1cf61da-6dae-4168-b958-d91a85918a06     | bank3eg.json
+f3b0b9df-0352-42b5-9815-1d655ed42ab6     | bankdataset.xlsx
+d938b59a-4e7b-4f7f-8054-8c9f19e4a82b     | customers-100.csv
+00edc64b-2e42-415f-a887-ee66dcce3950     | customers-100.csv
+f601375a-6324-4ede-ac90-4f3e826f8a11     | bankdataset.xlsx
+8fdeda89-842a-4298-ad40-c399bd3ba5a3     | customers-100.csv
+6347f077-0c4f-4920-bc0f-0da20022d886     | 2022-FIFA-World-Cup-Performance-Sample-Data.xlsx
+daf1d99e-4d68-4b73-b21e-a99a75fb62bb     | 2022-FIFA-World-Cup-Performance-Sample-Data.xlsx
+befcf17a-9796-4437-a5a7-3d929cdb370f     | bank.csv
+5dea93c9-13bc-4159-83e0-a9b64d1243a2     | Inventory-Records-Sample-Data.xlsx
+b77e2cf0-846b-46fb-8156-9679b8b7492b     | customers-100.csv
+661a11fe-4424-470d-893a-0e2900a4042a     | Basic-Data-Entry-and-Formatting.xlsx
+8f98e3e2-eca6-4e9b-9cbf-79dff211c05c     | bank.csv
+ca1f4623-878f-43e7-8707-23e6be22b323     | customers-100.csv
+3a69f250-1e51-41cc-a776-44f20cfc737e     | customers-100.csv
+7f82fe0c-bde6-40e8-b08e-b47d490fabf3     | Technological-Products-Sample-Data.xlsx
+934fbb0a-aef5-4d84-9779-22b05d074be0     | bank.csv
+0a8848be-d36c-4474-8ab8-4d00fd36e949     | customers-100.csv
+813a852a-fc82-4a32-a1d0-098e7ad4b726     | bank.csv
+b336392e-992a-44a7-82af-bb6126985e64     | customers-100.csv
+d06c9450-cdc4-456d-a7a7-a76386f85c32     | bank.csv
+1257115d-6372-4cef-8bcc-f7904d8ad9f1     | bank.csv
+4e1f015b-88fa-4526-949c-2fdd466eaaaa     | Basic-Data-Entry-and-Formatting.xlsx
+6b621754-cf3f-4e3f-becc-520b9cd6a05b     | bankdataset.xlsx
+687bfc67-9c7c-4859-8cf7-0e287e830773     | bank.csv
+db314999-9ae5-48f6-94c3-42acc4acc296     | customers-100.csv
+7ce9b759-1432-4727-bcc8-89a10cda0cf6     | bankdataset.xlsx
+bf9b016c-e379-4654-8c05-bdb2385d6f63     | bank.csv
+e012d6f6-81a7-405b-a625-2f568b9b4205     | bank.csv
+12775bd9-50c9-4d6d-a8fd-09115c2bf8ed     | customers-100.csv
+09c62969-54db-41d1-912e-13e626913d8f     | bank.csv
+8dd748f5-eb37-4242-ae3b-4e96ec26a092     | bankdataset.xlsx
+477ecd98-20cc-42c7-b387-69b7f328efa7     | Technological-Products-Sample-Data.xlsx
+d2dfbcf5-079b-4900-95cb-02a4c1ec68f8     | bankdataset.xlsx
+af0909a0-c9d7-4e0f-82f0-05323d81dc4d     | bank.csv
+6017e01b-838c-49e4-9e69-f482f2b64b1c     | bankdataset.xlsx
+9ba6ef0a-5b1d-46e0-9000-702f7653975a     | bank.csv
+6a62dff0-df13-47f6-9ead-10790f8b63a0     | bank.csv
+c8423bd3-38c7-4723-b259-916f4d92ca36     | Basic-Data-Entry-and-Formatting.xlsx
+b088b09b-869f-420c-953d-2b4a3d363870     | UPI DATA.csv
+4610cef9-c661-49ee-b2c4-29d0034dfc94     | customers-100.csv
+a7919372-8b18-46ee-86ef-ee16db88395e     | customers-100.csv
+8625d0e8-5fe9-4ff9-bbb7-a45bfbaa5bfb     | customers-100.csv
+e865fddd-ec59-4886-91ae-b3f1caf2eb4c     | bank.csv
+320cd224-1771-461c-8031-81a6269f562d     | customers-100.csv
+c14c2750-7904-4dde-9374-4d3f661a5ade     | bank.csv
+2d2dd8bb-0721-4dac-9be4-f1bdec1f4290     | bank.csv
+bdf1e78b-fba7-44a2-93fc-a5934ef97099     | bank.csv
+4918c646-c382-4172-b850-f1b2aa6cc9ca     | bankdataset.xlsx
+6c6ab363-32cc-4bce-a981-0cf749fd0216     | UPI DATA.csv
+264afd3a-59cf-436b-a5f1-5a0338acae24     | bankdataset.xlsx
+be920690-d45f-487f-acdd-f56c467913bc     | bank.csv
+e3ad39ec-c466-4b0b-ba19-106f180d3ecb     | bank.csv
+31bb6960-63aa-4cf5-9394-9c7c0c5d2282     | UPI DATA.csv
+12127fe7-19df-404f-93c3-458bb022f2d2     | Technological-Products-Sample-Data.xlsx
+0ed6fdcf-c86d-4d74-a2d1-67d2a6a1c2c8     | bank3eg.json
+4c1bf000-8b75-4ee0-ae3f-ba7c0be944b3     | UPI DATA.csv
+831638f1-24fd-4bcb-93b3-4e51623a10b7     | customers-100.csv
+a9a871a4-3f1d-4e0a-bda5-de46af488a0d     | Call-Center-Sentiment-Sample-Data.xlsx
+222f5fed-078c-496a-bf38-b1528fe3f1cc     | bank.csv
+05813c0c-4c64-48da-8ad3-6e00c80c6299     | customers-100.csv
+fe543d1f-dbeb-4ee2-9ad8-e398ee50dcae     | UPI DATA.csv
+1516cf4c-6bb4-4057-ad7b-5c27c0c83617     | bankdataset.xlsx
+4f340eba-2971-41ea-98f5-d3e89ab4cca4     | UPI DATA.csv
+ed3499a4-c5de-49c3-8e65-d8080822430f     | UPI DATA.csv
+f52cb987-1042-4a4c-bf20-9d1262598f37     | UPI DATA.csv
+c09ab52b-0146-424d-87da-e52ec7ff7807     | Inventory-Records-Sample-Data.xlsx
+c9168475-8eb3-4084-b9bc-720ba99e5e9e     | bank3eg.json
+9e60e049-5135-4e41-ab53-d82f82b957b2     | UPI DATA.csv
+a3e0045e-c158-4364-9b64-5a13c5cbe1ab     | Inventory-Records-Sample-Data.xlsx
+9f69a614-573f-49ca-a499-03463e29e6b1     | Technological-Products-Sample-Data.xlsx
+64d2dc9a-bcc2-472e-9969-e58d4a2c6848     | Inventory-Records-Sample-Data.xlsx
+565d8ed3-f01c-4a07-909d-d3698ab191a1     | 2022-FIFA-World-Cup-Performance-Sample-Data.xlsx
+05e494cf-5d12-403b-89d3-3eddeb003d73     | bankdataset.xlsx
+85c05c8c-4b8e-4d0f-8aa2-4decc574d708     | UPI DATA.csv
+74d9e4ab-5481-4f51-9a74-0906f9dbd09f     | UPI DATA.csv
+118ebe59-f781-4625-9d03-acfd4f371713     | 2022-FIFA-World-Cup-Performance-Sample-Data.xlsx
+5c2d7c28-ddf5-478f-9e6b-c5e756fcf67e     | Call-Center-Sentiment-Sample-Data.xlsx
+d8471c54-07d0-43d3-923e-8fd4fdd81241     | Basic-Data-Entry-and-Formatting.xlsx
+48f27044-4354-4071-9505-ec88ade9e63e     | 2022-FIFA-World-Cup-Performance-Sample-Data.xlsx
+c6e97a89-7fa6-40c2-85b9-1bffb5f04551     | Call-Center-Sentiment-Sample-Data.xlsx
+cbede5e0-8929-4918-b106-ea3255700d35     | Call-Center-Sentiment-Sample-Data.xlsx
+e02e8f6a-bdfc-4ce6-a759-a3d3446f1e24     | Inventory-Records-Sample-Data.xlsx
+dc807fbb-b262-4c75-b90f-b1e483b20b4a     | Call-Center-Sentiment-Sample-Data.xlsx
+03d2dc7a-b7a4-4998-b28e-234a39377493     | bank.csv
+7cdafe43-0d1b-4698-80d3-de08a9fbcafc     | 2022-FIFA-World-Cup-Performance-Sample-Data.xlsx
+218539c8-e836-4050-9dd4-8ded7a830473     | UPI DATA.csv
+680cb024-3963-41d4-8be4-6bdfcb05756d     | Call-Center-Sentiment-Sample-Data.xlsx
+904b2d02-93f3-4803-a565-2234d5f859b9     | Inventory-Records-Sample-Data.xlsx
+258dc4ea-8b57-479e-adea-e91d235059de     | 2022-FIFA-World-Cup-Performance-Sample-Data.xlsx
+27d7f6f1-7ca1-4614-8135-95d50800bd74     | bank.csv
+074d5625-b1ff-487a-8213-92fbf034d65f     | 2022-FIFA-World-Cup-Performance-Sample-Data.xlsx
+2db3cd3a-1f5b-4549-94a6-4143173a2436     | Call-Center-Sentiment-Sample-Data.xlsx
+23059055-cfa3-4e44-ba2b-7ebb2346e7e4     | bank3eg.json
+b92086c6-0a13-4498-b873-5b03d93a985f     | demo_sales_dashboard_dataset.csv
+43934edb-dcd1-4cd3-bdc6-8e0886b38b9e     | 2022-FIFA-World-Cup-Performance-Sample-Data.xlsx
+95994cdd-7a42-4e97-95a0-3ab17c9838a9     | Inventory-Records-Sample-Data.xlsx
+3a47a496-df66-48c3-bc98-02774d6428d1     | UPI DATA.csv
+86e7bcd3-cef1-4d0e-b49d-53f54f67a114     | sample1.sql
+d5b0ebc2-4da7-47cd-85c0-3ff1d9c73aa7     | Inventory-Records-Sample-Data.xlsx
+0705bf11-fbe5-4de0-a3ed-b338a192569a     | Basic-Data-Entry-and-Formatting.xlsx
+4496f3de-00ae-44d9-8bb0-5efdd25f5001     | Inventory-Records-Sample-Data.xlsx
+2091de16-0e1a-487a-b800-8369348a994d     | Inventory-Records-Sample-Data.xlsx
+7d75c04d-13d0-43a1-855a-0ec670fedad1     | bank.csv
+56435600-0606-434f-aea1-f9f0c648c502     | Technological-Products-Sample-Data.xlsx
+53f81129-a009-482d-96a4-e7aef455a07f     | Call-Center-Sentiment-Sample-Data.xlsx
+96ec49fc-729d-4cca-9168-0ce27da77fd5     | Inventory-Records-Sample-Data.xlsx
+aff482a6-11bb-4934-b33c-2c09ea82dbca     | Call-Center-Sentiment-Sample-Data.xlsx
+4aaee8dc-5c49-4c32-ae46-874811575b6b     | Call-Center-Sentiment-Sample-Data.xlsx
+cd0915af-c01a-455a-8b9c-5fab616e2aeb     | Call-Center-Sentiment-Sample-Data.xlsx
+b0c8e6f3-1a2c-4d55-834f-7e7f489a89e8     | customers-100.csv
+d332ed9b-ffe7-4174-8c2a-39ea5baa3384     | Call-Center-Sentiment-Sample-Data.xlsx
+c1bb7141-59c4-4379-a740-3279fbcd3153     | Call-Center-Sentiment-Sample-Data.xlsx
+a0f14ec6-94f1-40ae-8486-7c40aefb29e2     | Inventory-Records-Sample-Data.xlsx
+436b9a0c-f614-4298-b4ab-e72c41cd8c27     | bank.csv
+596eba4a-0fd5-41a0-88af-34de04a21c12     | demo_sales_dashboard_dataset.csv
+62050c51-0eee-4ca1-92e1-ddad95f90454     | Inventory-Records-Sample-Data.xlsx
+7d597a4b-65bd-4594-bf80-22db075eae06     | Inventory-Records-Sample-Data.xlsx
+9788d178-0588-458a-a742-666c01a75357     | Call-Center-Sentiment-Sample-Data.xlsx
+ed9c9d91-2126-4b88-a513-970a946cf121     | demo_sales_dashboard_dataset.csv
+fa23df4a-3314-41a9-9c0d-e6de2679aeab     | sample1.sql
+9f3b0804-9db1-4371-bb66-a60b4b501ce8     | demo_sales_dashboard_dataset.csv
+1fdc399b-28e0-4358-963f-103a261b42a6     | 2022-FIFA-World-Cup-Performance-Sample-Data.xlsx
+68ece98f-0f81-4f65-9e85-fa47fbb0bd19     | 2022-FIFA-World-Cup-Performance-Sample-Data.xlsx
+8696e069-e5c8-4d33-8d10-fadc5b7d5aaa     | sample1.sql
+292a2903-b8c4-42ae-abea-70bb150f0ad1     | Call-Center-Sentiment-Sample-Data.xlsx
+0d220719-aa61-4757-b587-50e7dd46d7a8     | Call-Center-Sentiment-Sample-Data.xlsx
+25347137-73d6-4587-8d35-2a8b102d91bb     | Technological-Products-Sample-Data.xlsx
+18b291f2-0271-4bc3-a792-057e6d25a057     | 2022-FIFA-World-Cup-Performance-Sample-Data.xlsx
+d9f6678a-3beb-4ba8-a765-4ba5f15d6ec5     | Call-Center-Sentiment-Sample-Data.xlsx
+75b34980-42e2-44f1-95af-28ceb67658fd     | 2022-FIFA-World-Cup-Performance-Sample-Data.xlsx
+86a473ed-c5fb-48ef-8c22-e1f4116d2bd0     | sql_query_86a473ed.csv
+95544d96-5a1f-4515-9e97-33f5a00122ad     | demo_sales_dashboard_dataset.csv
+02d527fd-80c6-43e6-8456-84808f109236     | sql_query_02d527fd.csv
+52a3962d-51f1-4da0-97fe-e31743c5143c     | demo_sales_dashboard_dataset.csv
+e6990c6a-c11d-4156-b887-546afdb1f024     | demo_sales_dashboard_dataset.csv
+675390fb-ba82-4c27-b02a-df4ccc4b5048     | Call-Center-Sentiment-Sample-Data.xlsx
+43a68c2a-796d-4fb2-8418-5fe46986778d     | sql_query_43a68c2a.csv
+839ba83e-eb71-4b6a-b2eb-573ca581c15d     | demo_sales_dashboard_dataset.csv
+ceebb551-1392-43f3-a7ca-56aa36068c5b     | Inventory-Records-Sample-Data.xlsx
+7c95aa6b-4c6c-48b0-a0e6-45a21a3e0a29     | sql_query_7c95aa6b.csv

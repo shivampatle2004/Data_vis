@@ -1,0 +1,212 @@
+.add-file-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.add-file-modal-container {
+    background: white;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    position: relative;
+    animation: slideUp 0.3s ease-out;
+    display: flex;
+    flex-direction: column;
+}
+
+.add-file-modal-header {
+    padding: 2.5rem 2rem 1rem;
+    text-align: center;
+}
+
+.add-file-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.2s;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+}
+
+.add-file-modal-close:hover {
+    color: #000;
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.add-file-modal-title {
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.add-file-modal-subtitle {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.add-file-modal-body {
+    padding: 1rem 2rem 2.5rem;
+}
+
+.add-file-single-option {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+.add-file-upload-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 3rem 2rem;
+    background: #f8fafc;
+    border: 2px dashed #cbd5e1;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-align: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.add-file-upload-card:hover {
+    transform: translateY(-4px);
+    background: #ffffff;
+    border-color: #78176b;
+    box-shadow: 0 15px 30px rgba(120, 23, 107, 0.15);
+}
+
+.add-file-svg-wrapper {
+    width: 80px;
+    height: 80px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    color: #78176b;
+    transition: transform 0.3s ease;
+}
+
+.add-file-upload-card:hover .add-file-svg-wrapper {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.upload-svg-icon {
+    width: 32px;
+    height: 32px;
+}
+
+.add-file-option-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.add-file-option-label {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1a1a1a;
+}
+
+.add-file-option-desc {
+    display: block;
+    font-size: 0.9rem;
+    color: #64748b;
+    max-width: 250px;
+}
+
+/* Dark Mode Support */
+.dark-theme .add-file-modal-container {
+    background: #1e1e1e;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.dark-theme .add-file-modal-title {
+    color: #ffffff;
+}
+
+.dark-theme .add-file-modal-subtitle {
+    color: #aaaaaa;
+}
+
+.dark-theme .add-file-modal-close {
+    color: #aaaaaa;
+}
+
+.dark-theme .add-file-modal-close:hover {
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .add-file-upload-card {
+    background: #2d2d2d;
+    border-color: #444;
+}
+
+.dark-theme .add-file-upload-card:hover {
+    background: #333333;
+    border-color: #9d3890;
+}
+
+.dark-theme .add-file-option-label {
+    color: #ffffff;
+}
+
+.dark-theme .add-file-option-desc {
+    color: #94a3b8;
+}
+
+.dark-theme .add-file-svg-wrapper {
+    background: #1e1e1e;
+    color: #d46cc8;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        transform: translateY(20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

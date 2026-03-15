@@ -1,0 +1,167 @@
+INFO:     Started server process [13239]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8010 (Press CTRL+C to quit)
+WARNING: PostgreSQL connection failed ((psycopg2.OperationalError) connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (::1), port 5432 failed: Connection refused
+	Is the server running on that host and accepting TCP/IP connections?
+
+(Background on this error at: https://sqlalche.me/e/20/e3q8)). Falling back to SQLite for local development.
+DEBUG: Application starting up and initializing DB...
+Database tables verified/created successfully!
+DEBUG: Demo user demo@example.com already exists.
+INFO:     127.0.0.1:54183 - "HEAD / HTTP/1.1" 405 Method Not Allowed
+INFO:     127.0.0.1:54185 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54185 - "GET /assets/index-DS6CQCVZ.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54187 - "GET /assets/index-AdffS53e.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54185 - "GET /logo2.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54185 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54201 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54201 - "GET /assets/index-DS6CQCVZ.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54203 - "GET /assets/index-AdffS53e.css HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54203 - "GET /logo2.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54203 - "GET /favicon.ico HTTP/1.1" 200 OK
+SUCCESS: Triggered processing for 322f5568-a0d7-4796-b98a-2ee5340a1470 by user 2
+INFO:     127.0.0.1:54205 - "POST /api/files/upload HTTP/1.1" 200 OK
+DEBUG: Processing file: 322f5568-a0d7-4796-b98a-2ee5340a1470
+DEBUG: Reading file from path: uploads/322f5568-a0d7-4796-b98a-2ee5340a1470.csv
+DEBUG: Cache MISS for uploads/322f5568-a0d7-4796-b98a-2ee5340a1470.csv. Reading from disk...
+DEBUG: Inferring types for 4 columns
+DEBUG: Calculating column stats in parallel
+INFO:     127.0.0.1:54205 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/status HTTP/1.1" 200 OK
+DEBUG: Generating graph recommendations
+DEBUG: Pre-calculating graph data in parallel
+DEBUG: Successfully processed 322f5568-a0d7-4796-b98a-2ee5340a1470
+INFO:     127.0.0.1:54205 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54205 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/graphs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54210 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/schema HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54208 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/statistics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54211 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/download HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54315 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54315 - "GET /assets/index-DS6CQCVZ.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54321 - "GET /assets/index-AdffS53e.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54315 - "GET /logo2.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54315 - "GET /favicon.ico HTTP/1.1" 200 OK
+SUCCESS: Triggered processing for 372f8476-404b-4790-8a6d-c4fd5ae23f2c (anonymous)
+INFO:     127.0.0.1:54332 - "POST /api/files/upload HTTP/1.1" 200 OK
+/Users/tanmayrathi/Downloads/one-stop-analytics-saa-s-frontend/backend/services/data_processor.py:100: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  pd.to_datetime(sample, errors='raise')
+/Users/tanmayrathi/Downloads/one-stop-analytics-saa-s-frontend/backend/services/data_processor.py:100: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  pd.to_datetime(sample, errors='raise')
+DEBUG: Processing file: 372f8476-404b-4790-8a6d-c4fd5ae23f2c
+DEBUG: Reading file from path: uploads/372f8476-404b-4790-8a6d-c4fd5ae23f2c.csv
+DEBUG: Cache MISS for uploads/372f8476-404b-4790-8a6d-c4fd5ae23f2c.csv. Reading from disk...
+DEBUG: Inferring types for 11 columns
+DEBUG: Calculating column stats in parallel
+DEBUG: Generating graph recommendations
+DEBUG: Pre-calculating graph data in parallel
+DEBUG: Successfully processed 372f8476-404b-4790-8a6d-c4fd5ae23f2c
+INFO:     127.0.0.1:54332 - "GET /api/files/372f8476-404b-4790-8a6d-c4fd5ae23f2c/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54332 - "GET /api/files/372f8476-404b-4790-8a6d-c4fd5ae23f2c/graphs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54338 - "GET /api/files/372f8476-404b-4790-8a6d-c4fd5ae23f2c/download HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54337 - "GET /api/files/372f8476-404b-4790-8a6d-c4fd5ae23f2c/schema HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54335 - "GET /api/files/372f8476-404b-4790-8a6d-c4fd5ae23f2c/statistics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54416 - "GET /?fileId=322f5568-a0d7-4796-b98a-2ee5340a1470&fileName=customer_data.csv HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54418 - "GET /assets/index-DS6CQCVZ.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54416 - "GET /assets/index-AdffS53e.css HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54416 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54418 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54416 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/graphs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54423 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/schema HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54424 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/download HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54421 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/statistics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54421 - "GET /?fileId=322f5568-a0d7-4796-b98a-2ee5340a1470&fileName=customer_data.csv HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54421 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54421 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/graphs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54416 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/download HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54423 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/schema HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54424 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/statistics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54424 - "GET /?fileId=322f5568-a0d7-4796-b98a-2ee5340a1470&fileName=customer_data.csv HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54424 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54424 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/graphs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54416 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/schema HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54421 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/download HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54423 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/statistics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54423 - "GET /?fileId=322f5568-a0d7-4796-b98a-2ee5340a1470&fileName=customer_data.csv HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54423 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54423 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/graphs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54416 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/schema HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54424 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/download HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54421 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/statistics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54421 - "GET /?fileId=322f5568-a0d7-4796-b98a-2ee5340a1470&fileName=customer_data.csv HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54421 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54421 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/graphs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54416 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/schema HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54423 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/download HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54424 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/statistics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54424 - "GET /?fileId=322f5568-a0d7-4796-b98a-2ee5340a1470&fileName=customer_data.csv HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54424 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54424 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/graphs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54416 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/schema HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54421 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/download HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54423 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/statistics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54423 - "GET /?fileId=322f5568-a0d7-4796-b98a-2ee5340a1470&fileName=customer_data.csv HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54423 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54423 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/graphs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54416 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/schema HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54424 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/download HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54421 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/statistics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54421 - "GET /?fileId=322f5568-a0d7-4796-b98a-2ee5340a1470&fileName=customer_data.csv HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54421 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54421 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/graphs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54416 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/schema HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54423 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/download HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54424 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/statistics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54424 - "GET /?fileId=322f5568-a0d7-4796-b98a-2ee5340a1470&fileName=customer_data.csv HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54424 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54424 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/graphs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54416 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/schema HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54421 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/download HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54423 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/statistics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54423 - "GET /?fileId=322f5568-a0d7-4796-b98a-2ee5340a1470&fileName=customer_data.csv HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54423 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54423 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/graphs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54416 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/schema HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54424 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/download HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54421 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/statistics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54428 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54428 - "GET /assets/index-AdffS53e.css HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54430 - "GET /assets/index-DS6CQCVZ.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54430 - "GET /logo2.png HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54430 - "GET /favicon.ico HTTP/1.1" 200 OK
+SUCCESS: Triggered processing for 140326e8-b717-44de-b5af-b2d23fb8a078 (anonymous)
+INFO:     127.0.0.1:54440 - "POST /api/files/upload HTTP/1.1" 200 OK
+/Users/tanmayrathi/Downloads/one-stop-analytics-saa-s-frontend/backend/services/data_processor.py:100: UserWarning: Could not infer format, so each element will be parsed individually, falling back to `dateutil`. To ensure parsing is consistent and as-expected, please specify a format.
+  pd.to_datetime(sample, errors='raise')
+DEBUG: Processing file: 140326e8-b717-44de-b5af-b2d23fb8a078
+DEBUG: Reading file from path: uploads/140326e8-b717-44de-b5af-b2d23fb8a078.csv
+DEBUG: Cache MISS for uploads/140326e8-b717-44de-b5af-b2d23fb8a078.csv. Reading from disk...
+DEBUG: Inferring types for 1 columns
+DEBUG: Calculating column stats in parallel
+DEBUG: Generating graph recommendations
+DEBUG: Pre-calculating graph data in parallel
+DEBUG: Successfully processed 140326e8-b717-44de-b5af-b2d23fb8a078
+INFO:     127.0.0.1:54440 - "GET /api/files/140326e8-b717-44de-b5af-b2d23fb8a078/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54440 - "GET /api/files/140326e8-b717-44de-b5af-b2d23fb8a078/graphs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54445 - "GET /api/files/140326e8-b717-44de-b5af-b2d23fb8a078/schema HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54443 - "GET /api/files/140326e8-b717-44de-b5af-b2d23fb8a078/statistics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54446 - "GET /api/files/140326e8-b717-44de-b5af-b2d23fb8a078/download HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54593 - "GET /?fileId=322f5568-a0d7-4796-b98a-2ee5340a1470&fileName=customer_data.csv HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54593 - "GET /assets/index-DS6CQCVZ.js HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54595 - "GET /assets/index-AdffS53e.css HTTP/1.1" 304 Not Modified
+INFO:     127.0.0.1:54595 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54593 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54593 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/graphs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54595 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/statistics HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54598 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/schema HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54599 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/download HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54603 - "GET /?fileId=322f5568-a0d7-4796-b98a-2ee5340a1470&fileName=customer_data.csv HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54604 - "GET /assets/index-DS6CQCVZ.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54603 - "GET /assets/index-AdffS53e.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54604 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/status HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54603 - "GET /favicon.ico HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54604 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/graphs HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54608 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/schema HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54609 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/download HTTP/1.1" 200 OK
+INFO:     127.0.0.1:54603 - "GET /api/files/322f5568-a0d7-4796-b98a-2ee5340a1470/statistics HTTP/1.1" 200 OK
