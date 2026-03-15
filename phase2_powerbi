@@ -1,0 +1,413 @@
+Phase 2 – Interactivity Layer
+Reports Page Enhancement
+1. Project Overview
+
+Phase 1 delivered:
+
+Data preview
+
+Transformation pipeline
+
+Chart customization
+
+Multi-chart dashboard
+
+Layout persistence
+
+Phase 2 introduces interactive analytics capabilities, including:
+
+Global filters (Slicers)
+
+Cross-filtering between charts
+
+Drill-down (hierarchical navigation)
+
+Chart-level filters
+
+This phase must significantly improve dashboard interactivity and user exploration capabilities.
+
+2. Scope of Phase 2
+
+This phase includes implementation of:
+
+Global Filters (Slicers)
+
+Cross-Filtering Between Charts
+
+Drill-Down Hierarchy Support
+
+Chart-Level Filters
+
+State Synchronization & Performance Controls
+
+This phase does NOT include:
+
+Data modeling across multiple tables
+
+AI features
+
+Advanced analytics (forecasting, clustering)
+
+Enterprise security features
+
+3. Functional Requirements
+3.1 Global Filters (Slicers)
+Objective
+
+Allow users to filter entire dashboard using shared filter controls.
+
+Functional Requirements
+
+Users must be able to:
+
+Add a global filter to dashboard.
+
+Choose column for filtering.
+
+Select filter type based on column type:
+
+Column Type	Filter Type
+string	Multi-select dropdown
+number	Range slider
+date	Date range picker
+boolean	Toggle
+
+Apply filter across all charts.
+
+Clear individual filter.
+
+Reset all filters.
+
+Filters must:
+
+Apply instantly.
+
+Be reflected visually in charts.
+
+Persist when dashboard is saved.
+
+Filter State Structure
+{
+  "globalFilters": [
+    {
+      "id": "filter_1",
+      "column": "Region",
+      "type": "multi-select",
+      "value": ["East", "West"]
+    }
+  ]
+}
+Rules
+
+Filters must apply on computedDataset (after transformations).
+
+Filters must stack (multiple filters combine with AND logic).
+
+Removing filter must recompute dataset.
+
+Acceptance Criteria
+
+Selecting a region updates all charts.
+
+Range slider updates charts instantly.
+
+Date range filter works correctly.
+
+Clearing filter restores previous state.
+
+Filters persist after reload.
+
+3.2 Cross-Filtering Between Charts
+Objective
+
+Enable charts to filter each other through user interaction.
+
+Functional Requirements
+
+When user clicks:
+
+A bar in a bar chart
+
+A slice in a pie chart
+
+A point in scatter plot
+
+The selected value must:
+
+Apply as a temporary filter.
+
+Update all other charts.
+
+Highlight selected segment.
+
+Clicking again must:
+
+Remove selection.
+
+Cross-filter state must:
+
+Combine with global filters.
+
+Use AND logic.
+
+Be cleared independently.
+
+Interaction State Structure
+{
+  "crossFilters": [
+    {
+      "sourceChartId": "chart_1",
+      "column": "Region",
+      "value": "East"
+    }
+  ]
+}
+Behavior Rules
+
+Cross-filter applies only while selection active.
+
+If multiple charts selected → stack filters.
+
+If cross-filter conflicts with global filter → AND logic.
+
+Source chart must show selection highlight.
+
+Acceptance Criteria
+
+Clicking bar updates other charts.
+
+Clicking again removes filter.
+
+Multiple selections stack correctly.
+
+Charts re-render only when necessary.
+
+No full dashboard reload.
+
+3.3 Drill-Down (Hierarchy Support)
+Objective
+
+Allow users to navigate hierarchical data within a chart.
+
+Functional Requirements
+
+User must be able to:
+
+Define hierarchy:
+
+Date: Year → Quarter → Month → Day
+
+Custom: Category → Subcategory
+
+Enable drill mode per chart.
+
+Click to drill into next level.
+
+Provide “Drill Up” button.
+
+Reset drill state.
+
+Drill behavior:
+
+Drill state affects only that chart.
+
+Other charts remain unchanged.
+
+Drill should work with active filters.
+
+Hierarchy Definition Structure
+{
+  "hierarchies": [
+    {
+      "name": "DateHierarchy",
+      "levels": ["Year", "Quarter", "Month", "Day"]
+    }
+  ]
+}
+Drill State Structure
+{
+  "drillState": {
+    "chartId": "chart_1",
+    "currentLevel": "Month",
+    "path": {
+      "Year": 2025,
+      "Quarter": "Q1"
+    }
+  }
+}
+Acceptance Criteria
+
+Clicking Year drills into Quarter.
+
+Drill Up works.
+
+Filters remain applied.
+
+Drill state isolated per chart.
+
+Dashboard reload restores drill state.
+
+3.4 Chart-Level Filters
+Objective
+
+Allow each chart to have independent filters.
+
+Functional Requirements
+
+Per chart, allow:
+
+Add filter specific to chart.
+
+Top N filter (e.g., Top 5 by Revenue).
+
+Sorting override.
+
+Include/Exclude specific values.
+
+Chart-level filters must:
+
+Apply after global filters.
+
+Not affect other charts.
+
+Chart-Level Filter Structure
+{
+  "chartId": "chart_1",
+  "chartFilters": [
+    {
+      "type": "topN",
+      "column": "Revenue",
+      "value": 5
+    }
+  ]
+}
+Acceptance Criteria
+
+Top 5 filter shows correct results.
+
+Chart-level filter does not affect other charts.
+
+Sorting override works correctly.
+
+Filters persist after reload.
+
+3.5 State Management & Performance
+Objective
+
+Ensure interactivity does not degrade performance.
+
+Requirements
+
+System must:
+
+Maintain unified state:
+
+{
+  "globalFilters": [],
+  "crossFilters": [],
+  "chartFilters": [],
+  "drillState": {}
+}
+
+Debounce heavy recalculations.
+
+Prevent full dataset reprocessing unnecessarily.
+
+Use memoization for filtered datasets.
+
+Avoid re-rendering charts that are unaffected.
+
+Performance Acceptance Criteria
+
+Interaction response time < 300ms for 50k rows.
+
+No visible UI freeze.
+
+Only impacted charts re-render.
+
+Filter stacking works without performance degradation.
+
+4. Non-Functional Requirements
+
+Clean separation between:
+
+Dataset
+
+Transformation
+
+Filtering layer
+
+Visualization layer
+
+Modular architecture.
+
+Clear state synchronization.
+
+Reproducible state restoration.
+
+Error handling for invalid drill hierarchies.
+
+5. Testing & Validation Checklist
+Global Filters
+
+Add multi-select → charts update.
+
+Add range filter → charts update.
+
+Clear filter → restore previous state.
+
+Save & reload → filters persist.
+
+Cross-Filtering
+
+Click bar → other charts update.
+
+Click again → reset.
+
+Stack two chart selections → correct results.
+
+Cross + global filter combine correctly.
+
+Drill-Down
+
+Drill Year → Quarter.
+
+Drill Quarter → Month.
+
+Drill Up works.
+
+Drill state persists on reload.
+
+Chart-Level Filters
+
+Apply Top 5 → correct.
+
+Add sorting override → works.
+
+Chart filter isolated from others.
+
+Save & reload → persists.
+
+6. Completion Definition
+
+Phase 2 is complete when:
+
+Dashboard supports global filters.
+
+Charts dynamically filter each other.
+
+Drill-down works per chart.
+
+Chart-level filters operate independently.
+
+State persists across reload.
+
+Performance remains smooth with 50k rows.
+
+If any interactive behavior breaks state consistency, Phase 2 is incomplete.
+
+Expected Outcome After Phase 2
+
+Your tool should now feel like:
+
+A fully interactive self-service BI dashboard comparable in interactivity (not modeling depth) to enterprise BI tools.

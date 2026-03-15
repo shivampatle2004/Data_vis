@@ -1,0 +1,529 @@
+Phase 3 – Data Modeling & Calculation Engine
+Reports Page Enhancement
+1. Project Overview
+
+Phase 1 delivered:
+
+Data preview
+
+Transformation pipeline
+
+Chart customization
+
+Dashboard layout
+
+Phase 2 delivered:
+
+Global filters
+
+Cross-filtering
+
+Drill-down
+
+Chart-level filters
+
+Phase 3 introduces:
+
+Multiple dataset support
+
+Relationship builder
+
+Semantic data model layer
+
+Calculated columns
+
+Measure (aggregation) engine
+
+This phase transforms the platform into a true analytical BI system.
+
+2. Scope of Phase 3
+
+This phase includes implementation of:
+
+Multi-Dataset Support
+
+Relationship Builder
+
+Semantic Data Model Layer
+
+Calculated Columns
+
+Measures (Aggregation Engine)
+
+Model Persistence & Validation
+
+This phase does NOT include:
+
+AI features
+
+Advanced analytics (forecasting, clustering)
+
+Enterprise governance
+
+Live DB connectors (optional later phase)
+
+3. Functional Requirements
+3.1 Multi-Dataset Support
+Objective
+
+Allow users to upload and manage multiple datasets within a single report.
+
+Functional Requirements
+
+Users must be able to:
+
+Upload multiple files.
+
+View list of datasets.
+
+Rename dataset.
+
+Delete dataset.
+
+Use fields from multiple datasets in charts.
+
+Constraints:
+
+All datasets must pass through transformation pipeline.
+
+Each dataset maintains its own:
+
+originalDataset
+
+transformations
+
+computedDataset
+
+Dataset Model Structure
+{
+  "datasets": [
+    {
+      "id": "dataset_1",
+      "name": "Sales",
+      "originalDataset": {},
+      "transformations": [],
+      "computedDataset": {}
+    }
+  ]
+}
+Acceptance Criteria
+
+Upload 2 datasets → both appear in dataset panel.
+
+Fields selectable per dataset.
+
+Deleting dataset removes dependent charts.
+
+Dataset rename updates everywhere.
+
+3.2 Relationship Builder
+Objective
+
+Enable users to define relationships between datasets.
+
+Functional Requirements
+
+User must be able to:
+
+Open relationship builder UI.
+
+Drag column from Dataset A → Dataset B.
+
+Define:
+
+One-to-many
+
+Many-to-one
+
+Delete relationship.
+
+View relationship diagram.
+
+Rules:
+
+Only compatible data types allowed.
+
+Warn if relationship creates circular dependency.
+
+Support multiple relationships.
+
+Relationship Structure
+{
+  "relationships": [
+    {
+      "fromDataset": "Sales",
+      "fromColumn": "CustomerID",
+      "toDataset": "Customers",
+      "toColumn": "CustomerID",
+      "type": "one-to-many"
+    }
+  ]
+}
+Backend Requirement
+
+Build relational graph.
+
+Maintain schema map.
+
+Validate joins dynamically.
+
+Prevent ambiguous joins.
+
+Acceptance Criteria
+
+Relationship correctly joins datasets.
+
+Charts can use fields from both datasets.
+
+Deleting relationship updates dependent charts.
+
+Circular relationships blocked.
+
+3.3 Semantic Data Model Layer
+Objective
+
+Create unified logical model from multiple datasets.
+
+Requirements
+
+System must:
+
+Build model graph from datasets + relationships.
+
+Resolve joins dynamically when chart query executed.
+
+Support:
+
+Inner join
+
+Left join
+
+Prevent ambiguous join paths.
+
+Model Representation
+{
+  "model": {
+    "tables": [],
+    "relationships": []
+  }
+}
+Query Engine Requirement
+
+When user builds chart using fields from:
+
+Sales.Revenue
+
+Customers.Region
+
+System must:
+
+Detect relationship.
+
+Build join plan.
+
+Aggregate correctly.
+
+Return grouped result.
+
+Acceptance Criteria
+
+Multi-table chart renders correctly.
+
+Join respects relationship direction.
+
+Removing relationship breaks dependent charts safely.
+
+No incorrect aggregations.
+
+3.4 Calculated Columns
+Objective
+
+Allow users to create row-level computed fields.
+
+Functional Requirements
+
+User must be able to:
+
+Add calculated column to a dataset.
+
+Enter formula.
+
+Reference other columns in same dataset.
+
+Edit/delete calculated column.
+
+Example formulas:
+
+Profit = Revenue - Cost
+
+Margin = (Revenue - Cost) / Revenue
+
+FullName = FirstName + " " + LastName
+
+Rules:
+
+Calculated columns evaluated per row.
+
+Must validate syntax before saving.
+
+Must handle null safely.
+
+Calculated Column Structure
+{
+  "calculatedColumns": [
+    {
+      "datasetId": "Sales",
+      "name": "Profit",
+      "formula": "Revenue - Cost"
+    }
+  ]
+}
+Technical Requirements
+
+Build expression parser.
+
+Prevent SQL injection or arbitrary code execution.
+
+Type inference required.
+
+Recompute when dataset changes.
+
+Acceptance Criteria
+
+Valid formula creates column.
+
+Invalid formula shows error.
+
+Column available in chart dropdown.
+
+Updates dynamically when base column changes.
+
+3.5 Measures (Aggregation Engine)
+Objective
+
+Enable dynamic aggregation independent of row-level data.
+
+Functional Requirements
+
+User must be able to:
+
+Create Measure.
+
+Define formula using aggregation functions.
+
+Use measure in any chart.
+
+Edit/delete measure.
+
+Supported functions (minimum):
+
+SUM()
+
+AVG()
+
+COUNT()
+
+MIN()
+
+MAX()
+
+DISTINCTCOUNT()
+
+DIVIDE()
+
+IF()
+
+RANK()
+
+Running total (basic)
+
+Example:
+
+TotalRevenue = SUM(Sales.Revenue)
+
+ProfitMargin = DIVIDE(SUM(Profit), SUM(Revenue))
+
+Measure Structure
+{
+  "measures": [
+    {
+      "name": "TotalRevenue",
+      "formula": "SUM(Sales.Revenue)"
+    }
+  ]
+}
+Technical Requirements
+
+Measures evaluated at query time.
+
+Must respect:
+
+Global filters
+
+Cross filters
+
+Chart filters
+
+Drill state
+
+Build aggregation execution engine.
+
+Prevent circular measure dependency.
+
+Validate syntax before saving.
+
+Query Execution Flow
+
+When rendering chart:
+
+Apply dataset transformations.
+
+Apply relationships.
+
+Apply filters.
+
+Apply grouping.
+
+Compute measures.
+
+Return aggregated dataset.
+
+Acceptance Criteria
+
+Measure computes correctly.
+
+Works across related tables.
+
+Updates with filters.
+
+Circular reference blocked.
+
+Performance acceptable for 50k rows.
+
+3.6 Model Persistence & Validation
+Objective
+
+Ensure model stability and recoverability.
+
+Requirements
+
+System must persist:
+
+Datasets
+
+Relationships
+
+Calculated columns
+
+Measures
+
+On reload:
+
+Model must reconstruct correctly.
+
+Dependent charts must validate.
+
+Invalid measures flagged.
+
+Validation Rules
+
+No duplicate measure names.
+
+No duplicate calculated column names.
+
+No circular relationships.
+
+No circular measure dependency.
+
+No ambiguous join path.
+
+4. Performance Requirements
+
+Must support 50k rows per dataset.
+
+Join operations optimized.
+
+Aggregation engine efficient.
+
+Query response < 500ms under typical load.
+
+Avoid full recompute if only measure changes.
+
+5. Testing & Validation Checklist
+Multi-Dataset
+
+Upload 2 datasets.
+
+Build chart using both → renders correctly.
+
+Delete dataset → dependent charts flagged.
+
+Relationships
+
+Create valid relationship → join works.
+
+Create circular → blocked.
+
+Delete relationship → chart invalidated safely.
+
+Calculated Columns
+
+Valid formula works.
+
+Invalid syntax blocked.
+
+Null-safe operations correct.
+
+Available in chart field list.
+
+Measures
+
+SUM works correctly.
+
+AVG works correctly.
+
+Measure respects filters.
+
+Circular measure prevented.
+
+Editing measure updates charts.
+
+Model Integrity
+
+Save dashboard.
+
+Reload.
+
+All relationships restored.
+
+All measures restored.
+
+Charts render correctly.
+
+6. Completion Definition
+
+Phase 3 is complete when:
+
+Multiple datasets supported.
+
+Relationships configurable.
+
+Charts can use cross-table fields.
+
+Calculated columns work.
+
+Measures compute correctly.
+
+Query engine respects filters.
+
+Model persists correctly.
+
+No circular dependency allowed.
+
+Performance acceptable.
+
+Expected Outcome After Phase 3
+
+After Phase 3, your system becomes:
+
+A true semantic BI platform capable of relational modeling and advanced aggregation — comparable in core modeling power to enterprise BI systems (without AI or enterprise governance).

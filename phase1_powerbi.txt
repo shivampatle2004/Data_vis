@@ -1,0 +1,417 @@
+Phase 1 – Foundation Upgrade
+Reports Page Enhancement
+1. Project Overview
+
+We currently have a Reports page that allows users to:
+
+Upload data files (SQL, JSON, Excel, CSV)
+
+Select chart type (bar, line, pie, area, funnel, radar, treemap, scatter, composed, histogram)
+
+Select X-axis and Y-axis fields
+
+Render a chart
+
+This phase aims to transform the page into a professional, self-service dashboard builder with improved usability, structured data handling, customization, and layout persistence.
+
+This phase does NOT include:
+
+Advanced data modeling
+
+Cross-filtering
+
+Drill-through
+
+AI features
+
+Enterprise governance
+
+2. Scope of Phase 1
+
+Phase 1 includes implementation of:
+
+Data Preview Panel
+
+Basic Data Cleaning & Transformation Layer
+
+Chart Customization Panel
+
+Dashboard Layout Builder
+
+Performance Safeguards
+
+Persistence & State Restoration
+
+3. Functional Requirements
+3.1 Data Preview Panel
+Objective
+
+Allow users to inspect uploaded data before visualization.
+
+Functional Requirements
+
+After file upload:
+
+Display:
+
+First 100 rows only
+
+Total row count
+
+Column names
+
+Auto-detected data types
+
+Null count per column
+
+Auto-detect column types:
+
+string
+
+number
+
+date
+
+boolean
+
+Grid features:
+
+Column sorting
+
+Column search
+
+Scrollable view
+
+Fixed header row
+
+The preview must not modify the original dataset.
+
+Technical Requirements
+
+Dataset structure must follow:
+
+{
+  "columns": [
+    {
+      "name": "Revenue",
+      "type": "number",
+      "nullable": false,
+      "nullCount": 0
+    }
+  ],
+  "rows": []
+}
+
+Constraints:
+
+Render only first 100 rows in UI.
+
+Support datasets up to 50,000 rows without UI freeze.
+
+Maintain original dataset separately from preview rendering.
+
+Acceptance Criteria
+
+Upload file → preview visible immediately.
+
+Data types correctly inferred.
+
+Null count accurate.
+
+Sorting works correctly.
+
+No performance lag with 50k rows.
+
+3.2 Basic Data Cleaning & Transformation Layer
+Objective
+
+Allow lightweight, non-destructive dataset manipulation.
+
+Functional Requirements
+
+User must be able to:
+
+Rename column
+
+Change column data type
+
+Remove duplicates
+
+Sort dataset
+
+Filter rows
+
+Hide column
+
+Undo last transformation
+
+Reset all transformations
+
+All transformations must:
+
+Be non-destructive
+
+Be reversible
+
+Be stored in a transformation pipeline
+
+Architecture Requirement
+
+Maintain three dataset layers:
+
+{
+  "originalDataset": {},
+  "transformations": [],
+  "computedDataset": {}
+}
+
+Example transformation:
+
+{
+  "type": "rename",
+  "column": "Rev",
+  "newName": "Revenue"
+}
+
+Rules:
+
+Never mutate originalDataset.
+
+Recompute computedDataset whenever transformation array changes.
+
+Transformation order must be preserved.
+
+Acceptance Criteria
+
+Rename updates everywhere (preview + charts + dropdowns).
+
+Type conversion correctly updates values.
+
+Remove duplicates reduces row count.
+
+Filters reflect immediately in charts.
+
+Undo restores previous state.
+
+Reset restores original dataset.
+
+3.3 Chart Customization Panel
+Objective
+
+Provide professional chart styling and formatting controls.
+
+Functional Requirements
+
+Each chart must allow:
+
+Editable chart title
+
+Editable X-axis label
+
+Editable Y-axis label
+
+Legend show/hide toggle
+
+Color picker (per series)
+
+Gridline toggle
+
+Number formatting options:
+
+Integer (1,000)
+
+Decimal (1,000.00)
+
+Currency
+
+Percentage
+
+Sorting control (asc/desc)
+
+Changes must:
+
+Apply instantly
+
+Not require page reload
+
+Chart Configuration Structure
+{
+  "chartId": "chart_1",
+  "type": "bar",
+  "xField": "Region",
+  "yField": "Revenue",
+  "options": {
+    "title": "Revenue by Region",
+    "showLegend": true,
+    "color": "#3366FF",
+    "xLabel": "Region",
+    "yLabel": "Total Revenue",
+    "grid": true,
+    "numberFormat": "currency",
+    "sort": "desc"
+  }
+}
+Acceptance Criteria
+
+Changing title updates instantly.
+
+Changing color updates instantly.
+
+Sorting changes data order correctly.
+
+Number formatting affects axis and tooltip.
+
+No UI reload required.
+
+3.4 Dashboard Layout Builder
+Objective
+
+Allow multiple charts arranged in a customizable dashboard.
+
+Functional Requirements
+
+User must be able to:
+
+Add multiple charts
+
+Drag charts to reposition
+
+Resize charts
+
+Delete chart
+
+Duplicate chart
+
+Save dashboard layout
+
+Reload dashboard with same layout
+
+Layout Structure
+{
+  "dashboardId": "dashboard_1",
+  "charts": [
+    {
+      "chartId": "chart_1",
+      "position": { "x": 0, "y": 0 },
+      "size": { "w": 6, "h": 4 }
+    }
+  ]
+}
+Persistence Requirements
+
+On save, system must persist:
+
+Dataset metadata
+
+Transformation pipeline
+
+Chart configurations
+
+Layout configuration
+
+On reload:
+
+Entire dashboard must restore to identical state.
+
+Acceptance Criteria
+
+Dragging is smooth.
+
+Resizing works.
+
+Layout persists after refresh.
+
+Duplicate retains configuration.
+
+Delete removes chart permanently.
+
+3.5 Performance Requirements
+
+System must:
+
+Handle datasets up to 50,000 rows.
+
+Avoid blocking main thread.
+
+Debounce expensive recalculations.
+
+Prevent unnecessary chart re-renders.
+
+Limit preview rendering to 100 rows.
+
+Performance is considered failed if:
+
+UI freezes for >500ms.
+
+Re-rendering occurs without state change.
+
+4. Non-Functional Requirements
+
+Modular architecture.
+
+Separation of UI and data logic.
+
+Clean state management.
+
+Error handling for invalid type conversions.
+
+Clear user feedback for loading states.
+
+5. Testing & Validation Checklist
+Data Preview
+
+Upload CSV (10k rows) → preview shows first 100.
+
+Upload file with null values → null count correct.
+
+Date column auto-detected correctly.
+
+Transformations
+
+Rename column → dropdown updates.
+
+Remove duplicates → row count decreases.
+
+Apply filter → chart updates.
+
+Undo → state restored.
+
+Reset → original dataset restored.
+
+Chart Customization
+
+Change color → updates instantly.
+
+Toggle legend → works.
+
+Apply currency format → tooltip shows $.
+
+Sort descending → chart order correct.
+
+Dashboard
+
+Add 3 charts → all render.
+
+Move one chart → others unaffected.
+
+Refresh page → layout preserved.
+
+Delete chart → removed permanently.
+
+6. Completion Definition
+
+Phase 1 is complete when:
+
+Users can upload a dataset.
+
+Inspect and clean data non-destructively.
+
+Create multiple customized charts.
+
+Arrange them in a dashboard.
+
+Save and reload dashboard state.
+
+Experience smooth performance with 50k rows.
+
+If any of the above fails, Phase 1 is not complete.

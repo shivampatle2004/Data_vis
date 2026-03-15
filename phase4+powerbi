@@ -1,0 +1,465 @@
+Phase 4 – Advanced Visual Analytics
+Reports Page Enhancement
+1. Project Overview
+
+Previous phases delivered:
+
+Phase 1: Data preview, transformation, dashboard builder
+
+Phase 2: Interactive filtering & drill-down
+
+Phase 3: Multi-dataset modeling, relationships, calculated columns, measures
+
+Phase 4 introduces:
+
+Advanced analytical visuals
+
+Geospatial analysis
+
+Forecasting & trend analytics
+
+Statistical enhancements (clustering, regression)
+
+Smart chart recommendations
+
+This phase elevates the system from a BI platform to an analytical intelligence tool.
+
+2. Scope of Phase 4
+
+This phase includes:
+
+Advanced Visual Types
+
+Geospatial Visualization (Maps)
+
+Forecasting & Trend Analysis
+
+Statistical & Clustering Capabilities
+
+Smart Chart Recommendation Engine
+
+Analytical Enhancements (Trendlines, Reference Lines)
+
+This phase does NOT include:
+
+Natural language querying
+
+Automated AI insight narratives
+
+Enterprise governance
+
+3. Functional Requirements
+3.1 Advanced Visual Types
+Objective
+
+Expand visualization capabilities beyond standard charts.
+
+Required New Visuals
+
+System must support:
+
+Waterfall Chart
+
+KPI Card
+
+Gauge Chart
+
+Heatmap
+
+Gantt Chart
+
+Box Plot
+
+Bullet Chart
+
+Each visual must:
+
+Integrate with filters (global, cross, chart-level)
+
+Support measures
+
+Support drill-down where applicable
+
+Visual Configuration Structure
+{
+  "chartId": "chart_5",
+  "type": "waterfall",
+  "config": {
+    "categoryField": "Month",
+    "valueField": "Revenue",
+    "showTotal": true
+  }
+}
+Acceptance Criteria
+
+Each visual renders correctly.
+
+Measures work in new visuals.
+
+Filtering updates visuals correctly.
+
+No UI freeze with 50k rows.
+
+Drill-down compatible where logical.
+
+3.2 Geospatial Visualization (Maps)
+Objective
+
+Enable geographic analysis.
+
+Functional Requirements
+
+System must support:
+
+Filled Map (Country/State)
+
+Bubble Map (Latitude/Longitude)
+
+Region Detection (auto-detect geo fields)
+
+Geo detection logic:
+
+Recognize fields like:
+
+Country
+
+State
+
+City
+
+Latitude
+
+Longitude
+
+If latitude/longitude provided:
+
+Plot directly.
+
+If region name provided:
+
+Use geocoding lookup table.
+
+Map Configuration Structure
+{
+  "chartId": "chart_map_1",
+  "type": "map",
+  "config": {
+    "locationField": "Country",
+    "valueField": "Revenue",
+    "mapType": "filled"
+  }
+}
+Requirements
+
+Maps must respect filters.
+
+Support tooltips.
+
+Support zoom & pan.
+
+Handle missing geo values gracefully.
+
+Acceptance Criteria
+
+Country-based map colors correctly.
+
+Bubble map plots coordinates correctly.
+
+Filters update map instantly.
+
+No crash on invalid geo values.
+
+3.3 Forecasting & Trend Analysis
+Objective
+
+Enable predictive and trend-based insights in time-series charts.
+
+Functional Requirements
+
+Applicable to line and area charts.
+
+Add support for:
+
+Trendline (linear regression)
+
+Moving average (user-selectable window)
+
+Forecast next N periods (basic regression-based)
+
+Confidence interval shading (optional)
+
+User controls:
+
+Enable/disable forecasting
+
+Set forecast horizon
+
+Set smoothing window
+
+Forecast Configuration
+{
+  "forecast": {
+    "enabled": true,
+    "periods": 3,
+    "confidenceInterval": 0.95
+  }
+}
+Requirements
+
+Works only with date-based X-axis.
+
+Must validate sufficient historical data.
+
+Must recompute after filters applied.
+
+Acceptance Criteria
+
+Trendline displays correctly.
+
+Forecast extends timeline correctly.
+
+Forecast respects filters.
+
+Insufficient data shows warning.
+
+No performance degradation.
+
+3.4 Statistical & Clustering Capabilities
+Objective
+
+Add analytical intelligence features.
+
+Functional Requirements
+
+Scatter plot must support:
+
+Linear regression line
+
+Correlation coefficient display
+
+Clustering (K-means, configurable K)
+
+Clustering requirements:
+
+Default K = 3
+
+User can change K
+
+Cluster coloring applied automatically
+
+Clustering Configuration
+{
+  "clustering": {
+    "enabled": true,
+    "method": "kmeans",
+    "k": 3
+  }
+}
+Rules
+
+Clustering must operate on filtered dataset.
+
+Clusters must update when filters change.
+
+Must handle up to 10k points safely.
+
+Acceptance Criteria
+
+Regression line accurate.
+
+Correlation displayed correctly.
+
+Changing K updates clusters.
+
+No UI freeze with 10k points.
+
+3.5 Analytical Enhancements (Reference & Trend Lines)
+Objective
+
+Provide additional statistical overlays.
+
+Required Enhancements
+
+Charts must support:
+
+Constant reference line
+
+Average line
+
+Median line
+
+Percentile line
+
+Conditional color thresholds
+
+Example:
+
+Highlight bars > average.
+
+Add horizontal reference line at target = 100,000.
+
+Configuration Example
+{
+  "referenceLines": [
+    {
+      "type": "average",
+      "label": "Avg Revenue"
+    }
+  ]
+}
+Acceptance Criteria
+
+Reference lines display correctly.
+
+Conditional coloring works.
+
+Lines respect filters.
+
+Toggle on/off works instantly.
+
+3.6 Smart Chart Recommendation Engine
+Objective
+
+Improve usability by suggesting optimal visual types.
+
+Functional Requirements
+
+When user selects fields:
+
+System must analyze:
+
+Data type
+
+Cardinality
+
+Aggregation type
+
+Distribution
+
+Based on rules, suggest:
+
+Bar chart for categorical + numeric
+
+Line chart for time-series
+
+Histogram for continuous distribution
+
+Scatter for numeric vs numeric
+
+Map if geo detected
+
+Recommendations must:
+
+Appear before chart creation.
+
+Allow override.
+
+Update dynamically when fields change.
+
+Recommendation Output Structure
+{
+  "recommendedCharts": [
+    "line",
+    "area"
+  ]
+}
+Acceptance Criteria
+
+Categorical + numeric → bar suggested.
+
+Date + numeric → line suggested.
+
+Lat/Long detected → map suggested.
+
+User can override suggestion.
+
+4. Performance Requirements
+
+System must:
+
+Maintain interaction response < 500ms.
+
+Avoid blocking UI thread for clustering/forecast.
+
+Offload heavy calculations to worker thread or backend.
+
+Prevent recomputation when not needed.
+
+Performance fails if:
+
+UI freezes for > 1 second.
+
+Forecasting blocks dashboard interaction.
+
+5. Testing & Validation Checklist
+Advanced Visuals
+
+Each visual renders correctly.
+
+Works with measures.
+
+Works with filters.
+
+No rendering errors.
+
+Maps
+
+Filled map colors properly.
+
+Bubble map accurate.
+
+Invalid geo data handled.
+
+Filters update map.
+
+Forecasting
+
+Trendline accurate.
+
+Forecast respects filters.
+
+Confidence interval visible.
+
+Insufficient data shows warning.
+
+Clustering
+
+Clusters render.
+
+Changing K updates clusters.
+
+Regression line accurate.
+
+Correlation correct.
+
+Recommendations
+
+Suggests correct chart type.
+
+Updates dynamically.
+
+Override works.
+
+6. Completion Definition
+
+Phase 4 is complete when:
+
+All advanced visuals function correctly.
+
+Geospatial visualization works reliably.
+
+Forecasting & clustering operate accurately.
+
+Statistical overlays available.
+
+Smart chart recommendation works.
+
+Performance remains stable under load.
+
+Expected Outcome After Phase 4
+
+After Phase 4, your system becomes:
+
+An advanced analytical BI platform capable of statistical analysis, geospatial insights, predictive modeling, and intelligent visualization guidance.
+
+It now competes not just as a dashboard builder, but as a data intelligence platform.

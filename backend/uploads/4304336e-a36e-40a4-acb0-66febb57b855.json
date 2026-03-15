@@ -1,0 +1,88 @@
+[
+  {
+    "order_id": "O1001",
+    "customer": {
+      "id": "C501",
+      "name": "  Suresh      Kumar ",
+      "email": "SURESH@MAIL.COM"
+    },
+    "items": [
+      { "product": "Laptop", "price": "60000", "qty": 1 },
+      { "product": "Mouse", "price": "800", "qty": "2" }
+    ],
+    "payment": {
+      "method": "CARD",
+      "status": "Success"
+    },
+    "order_date": "2025/11/18 10:25",
+    "discount": "5%"
+  },
+  {
+    "order_id": "O1002",
+    "customer": {
+      "id": "C502",
+      "name": "Anjali   Singh",
+      "email": "anjali@mail.com"
+    },
+    "items": [
+      { "product": "Keyboard", "price": 1200, "qty": 1 }
+    ],
+    "payment": {
+      "method": "UPI",
+      "status": "FAILED"
+    },
+    "order_date": "18-11-2025 11:00",
+    "discount": ""
+  },
+  {
+    "order_id": "O1001",
+    "customer": {
+      "id": "C501",
+      "name": "Suresh Kumar",
+      "email": "suresh@mail.com"
+    },
+    "items": [
+      { "product": "Laptop", "price": "60000.00", "qty": 1 },
+      { "product": "Mouse", "price": "0800", "qty": 2 }
+    ],
+    "payment": {
+      "method": "card",
+      "status": "SUCCESS"
+    },
+    "order_date": "2025-11-18T10:25:00Z",
+    "discount": "5"
+  },
+  {
+    "order_id": "",
+    "customer": {
+      "id": "C503",
+      "name": null,
+      "email": "INVALID"
+    },
+    "items": [],
+    "payment": {
+      "method": "COD",
+      "status": "PENDING"
+    },
+    "order_date": "",
+    "discount": "2%"
+  },
+  {
+    "order_id": "O1003",
+    "customer": {
+      "id": "C504",
+      "name": "Rahul Gupta",
+      "email": "rahul@mail.com"
+    },
+    "items": [
+      { "product": "Phone", "price": "30000", "qty": 1 },
+      { "product": "Charger", "price": "1000", "qty": 1 }
+    ],
+    "payment": {
+      "method": "Wallet",
+      "status": "Success"
+    },
+    "order_date": "Nov 18 2025 11:30AM",
+    "discount": "10%"
+  }
+]

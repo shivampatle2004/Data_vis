@@ -1,0 +1,481 @@
+Phase 5 – Performance & Scalability Engineering
+Reports Page Enhancement
+1. Project Overview
+
+Previous phases delivered:
+
+Phase 1: Dashboard foundation
+
+Phase 2: Interactive filtering
+
+Phase 3: Data modeling & measures
+
+Phase 4: Advanced analytics & statistical features
+
+Phase 5 introduces:
+
+Query optimization engine
+
+Aggregation caching
+
+Large dataset handling
+
+Incremental refresh
+
+Background computation
+
+Live database connectivity
+
+Scalable execution architecture
+
+This phase ensures the system performs reliably at scale.
+
+2. Scope of Phase 5
+
+This phase includes:
+
+Query Optimization Engine
+
+Aggregation Caching Layer
+
+Large Dataset Handling
+
+Incremental Data Refresh
+
+Background Processing Architecture
+
+Live Database Connectors
+
+Performance Monitoring & Metrics
+
+This phase does NOT include:
+
+AI/NLP features
+
+Enterprise governance
+
+External marketplace features
+
+3. Functional & Technical Requirements
+3.1 Query Optimization Engine
+Objective
+
+Improve execution performance for complex dashboards.
+
+Problem
+
+Current execution flow likely:
+
+Load full dataset
+
+Apply transformations
+
+Apply filters
+
+Apply joins
+
+Compute measures
+
+Return aggregated result
+
+This becomes slow as datasets grow.
+
+Requirements
+
+System must introduce a query planner that:
+
+Analyzes requested fields.
+
+Determines minimal required columns.
+
+Applies filters early (predicate pushdown).
+
+Applies joins only if necessary.
+
+Applies grouping before expensive operations.
+
+Query Execution Flow (Optimized)
+
+Identify required tables.
+
+Identify required columns.
+
+Push filters to earliest stage.
+
+Apply joins (if multi-table).
+
+Apply grouping.
+
+Compute measures.
+
+Apply sorting & chart-level filters.
+
+Acceptance Criteria
+
+Dashboard render time improves vs baseline.
+
+No unnecessary full-table scans.
+
+Unused columns not processed.
+
+Performance measurable improvement (≥30%).
+
+3.2 Aggregation Caching Layer
+Objective
+
+Avoid recomputing identical aggregations.
+
+Requirements
+
+Implement caching for:
+
+Filtered datasets
+
+Aggregated group results
+
+Computed measures
+
+Cache key must consider:
+
+Dataset version
+
+Active filters
+
+Drill state
+
+Measure definitions
+
+Grouping dimensions
+
+Cache Structure Example
+{
+  "cacheKey": "dataset1|region=East|measure=SUM(Revenue)|group=Month",
+  "result": {}
+}
+Rules
+
+Cache invalidates when:
+
+Dataset updated
+
+Transformation changes
+
+Measure modified
+
+TTL optional.
+
+Cache must not leak memory.
+
+Acceptance Criteria
+
+Repeated chart loads return instantly.
+
+Cache invalidates correctly.
+
+No stale data displayed.
+
+Memory usage controlled.
+
+3.3 Large Dataset Handling
+Objective
+
+Support datasets beyond 50k rows (target: 1M+ rows).
+
+Requirements
+1. Columnar Data Storage
+
+Store datasets in columnar format internally:
+
+Instead of:
+
+[ {row1}, {row2} ]
+
+Use:
+
+{
+  "Revenue": [],
+  "Region": [],
+  "Date": []
+}
+
+Improves aggregation speed.
+
+2. Virtualized Data Preview
+
+Render rows virtually.
+
+Never render full dataset in DOM.
+
+Load chunks (e.g., 100 rows per batch).
+
+3. Server-Side Aggregation
+
+For large datasets:
+
+Move heavy aggregations to backend.
+
+Frontend only renders result set.
+
+4. Data Chunking
+
+Process dataset in chunks.
+
+Avoid blocking main thread.
+
+Acceptance Criteria
+
+500k rows manageable.
+
+No UI freeze.
+
+Preview loads smoothly.
+
+Aggregation time remains acceptable (<1s typical case).
+
+3.4 Incremental Data Refresh
+Objective
+
+Avoid full recompute when only part of dataset changes.
+
+Requirements
+
+System must support:
+
+Dataset versioning.
+
+Incremental refresh logic:
+
+Only process new rows.
+
+Scheduled refresh (optional backend job).
+
+Dataset Version Structure
+{
+  "datasetId": "Sales",
+  "version": 3,
+  "lastUpdated": "2026-03-01"
+}
+Acceptance Criteria
+
+Updating dataset does not reset entire model unnecessarily.
+
+Cached aggregations update correctly.
+
+Dashboard remains functional during refresh.
+
+3.5 Background Processing Architecture
+Objective
+
+Prevent UI blocking during heavy operations.
+
+Requirements
+
+Heavy tasks must run:
+
+In Web Worker (frontend), OR
+
+In backend worker process
+
+Tasks to offload:
+
+Clustering
+
+Forecasting
+
+Large joins
+
+Complex aggregations
+
+Cache rebuilding
+
+Requirements
+
+Non-blocking UI.
+
+Show loading indicators.
+
+Cancel running computation if user changes filter.
+
+Acceptance Criteria
+
+UI responsive during heavy tasks.
+
+No browser freeze.
+
+Cancelling operation works correctly.
+
+3.6 Live Database Connectors
+Objective
+
+Enable direct database connectivity (without file upload).
+
+Supported Connectors (Minimum)
+
+MySQL
+
+PostgreSQL
+
+SQL Server
+
+Functional Requirements
+
+User must be able to:
+
+Add new connection.
+
+Enter credentials securely.
+
+Select database.
+
+Select table.
+
+Preview data.
+
+Enable live mode OR import mode.
+
+Security Requirements
+
+Credentials encrypted.
+
+No raw query execution from user input.
+
+Parameterized queries only.
+
+Query sandboxing required.
+
+Query Execution Modes
+Import Mode
+
+Load data once.
+
+Use internal engine.
+
+Live Mode
+
+Query database directly for aggregations.
+
+Acceptance Criteria
+
+Successful DB connection.
+
+Live chart renders correctly.
+
+Filters translate to SQL WHERE.
+
+No SQL injection possible.
+
+3.7 Performance Monitoring & Metrics
+Objective
+
+Provide internal visibility into system performance.
+
+Requirements
+
+Track:
+
+Query execution time
+
+Cache hit ratio
+
+Join execution time
+
+Measure evaluation time
+
+Memory usage
+
+Optional:
+
+Developer debug mode panel.
+
+Acceptance Criteria
+
+Performance logs available.
+
+Slow query detection working.
+
+No memory leaks.
+
+4. Non-Functional Requirements
+
+Modular query engine.
+
+Clear separation between:
+
+Storage layer
+
+Query planner
+
+Execution engine
+
+Visualization layer
+
+Fault tolerance.
+
+Safe error handling.
+
+Secure DB access.
+
+5. Testing & Validation Checklist
+Query Optimization
+
+Unused columns not processed.
+
+Filters applied early.
+
+Query time reduced.
+
+Caching
+
+Repeated load instant.
+
+Cache invalidates correctly.
+
+No stale results.
+
+Large Dataset
+
+500k rows manageable.
+
+Preview virtualized.
+
+Aggregation under acceptable time.
+
+Background Processing
+
+UI remains responsive.
+
+Cancel works.
+
+Loading state visible.
+
+Live Database
+
+Connect successfully.
+
+Live query works.
+
+Injection attempts blocked.
+
+Credentials secure.
+
+6. Completion Definition
+
+Phase 5 is complete when:
+
+System handles large datasets smoothly.
+
+Query execution optimized.
+
+Aggregations cached.
+
+UI never freezes.
+
+Live DB connections functional.
+
+Performance measurable and monitored.
+
+Expected Outcome After Phase 5
+
+After Phase 5, your platform becomes:
+
+A production-grade, scalable BI engine capable of handling large datasets, real-time queries, background computation, and optimized aggregation — suitable for serious commercial deployment.
